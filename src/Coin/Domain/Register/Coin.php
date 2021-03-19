@@ -18,6 +18,8 @@ class Coin
             $msg = 'Field money is invalid!';
             throw new \InvalidArgumentException($msg);
         }
+
+        $this->money = strtoupper($this->money);
     }
 
     public function getMoney(): string
