@@ -14,5 +14,17 @@ $app->group('/coins', function (\Slim\Routing\RouteCollectorProxy $group) {
     $group->put('/{id:[0-9]+}', \SRC\Coin\Infra\Http\Update::class);
 });
 
+$app->group('/hotels', function (\Slim\Routing\RouteCollectorProxy $group) {
+    $group->get('/{id:[0-9]+}', \SRC\Hotel\Infra\Http\FinderByIdentifier::class);
+
+    $group->get('', \SRC\Hotel\Infra\Http\FindAll::class);
+
+    $group->post('', \SRC\Hotel\Infra\Http\Register::class);
+
+    $group->delete('/{id:[0-9]+}', \SRC\Hotel\Infra\Http\Destroy::class);
+
+    $group->put('/{id:[0-9]+}', \SRC\Hotel\Infra\Http\Update::class);
+});
+
 
 $app->run();
