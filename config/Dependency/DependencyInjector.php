@@ -31,9 +31,6 @@ class DependencyInjector
             // database
             \PDO::class => \DI\get('database'),
 
-            // presenter mode json
-//            Presenter::class => \DI\autowire(Json::class),
-
             // COIN
             RegisterUnit::class => \DI\autowire(\SRC\Coin\Infra\Repository\Register::class),
             RegisterVM::class => \DI\autowire(\SRC\Coin\Infra\ViewModel\Register::class),
@@ -77,6 +74,28 @@ class DependencyInjector
 
             \SRC\Hotel\Adapters\Gateways\UpdateUnit::class => \DI\autowire(\SRC\Hotel\Infra\Repository\Update::class),
             \SRC\Hotel\Adapters\Gateways\Update::class => \DI\autowire(\SRC\Hotel\Adapters\Gateways\Update::class),
+
+            // Room
+            \SRC\Room\Adapters\Gateways\RegisterUnit::class => \DI\autowire(\SRC\Room\Infra\Repository\Register::class),
+            \SRC\Room\Adapters\Presenters\RegisterVM::class => \DI\autowire(\SRC\Room\Infra\ViewModel\Register::class),
+            \SRC\Room\Infra\Validator\Register::class => \DI\autowire(\SRC\Room\Infra\Validator\Register::class),
+            \SRC\Room\Adapters\Gateways\Register::class => \DI\autowire(\SRC\Room\Adapters\Gateways\Register::class),
+
+            \SRC\Room\Adapters\Gateways\FindByIdentifierUnit::class => \DI\autowire(\SRC\Room\Infra\Repository\FindByIdentifier::class),
+            \SRC\Room\Infra\Repository\FindByIdentifier::class => \DI\autowire(\SRC\Room\Infra\Repository\FindByIdentifier::class),
+            \SRC\Room\Adapters\Presenters\FindByIdentifierVM::class => \DI\autowire(\SRC\Room\Infra\ViewModel\FindByIdentifier::class),
+            \SRC\Room\Adapters\Gateways\FinderByIdentifier::class => \DI\autowire(\SRC\Room\Adapters\Gateways\FinderByIdentifier::class),
+
+            \SRC\Room\Adapters\Gateways\FindAllUnit::class => \DI\autowire(\SRC\Room\Infra\Repository\FindAll::class),
+            \SRC\Room\Infra\Repository\FindAll::class => \DI\autowire(\SRC\Room\Infra\Repository\FindAll::class),
+            \SRC\Room\Adapters\Presenters\FindAllVM::class => \DI\autowire(\SRC\Room\Infra\ViewModel\FindAll::class),
+            \SRC\Room\Adapters\Gateways\FindAll::class => \DI\autowire(\SRC\Room\Adapters\Gateways\FindAll::class),
+
+            \SRC\Room\Adapters\Gateways\DestroyUnit::class => \DI\autowire(\SRC\Room\Infra\Repository\Destroy::class),
+            \SRC\Room\Adapters\Gateways\Destroy::class => \DI\autowire(\SRC\Room\Adapters\Gateways\Destroy::class),
+
+            \SRC\Room\Adapters\Gateways\UpdateUnit::class => \DI\autowire(\SRC\Room\Infra\Repository\Update::class),
+            \SRC\Room\Adapters\Gateways\Update::class => \DI\autowire(\SRC\Room\Adapters\Gateways\Update::class),
 
         ]);
 
