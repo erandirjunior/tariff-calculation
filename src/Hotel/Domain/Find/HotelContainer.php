@@ -4,7 +4,7 @@ namespace SRC\Hotel\Domain\Find;
 
 use SRC\Hotel\Domain\RegisteredHotel;
 
-class CoinContainer
+class HotelContainer
 {
     public function __construct(private array $data = [])
     {}
