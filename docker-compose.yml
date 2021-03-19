@@ -1,0 +1,29 @@
+version: '3.5'
+services:
+  tariff:
+    image: webdevops/php-apache:8.0
+    volumes:
+      - .:/var/www/html
+    environment:
+      - WEB_DOCUMENT_ROOT=/var/www/html/public
+    ports:
+      - 8080:80
+    working_dir: '/var/www/html'
+    depends_on:
+      - mysql
+  composer:
+    image: composer
+    volumes:
+      - ./:/app
+    command: composer install
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - dba:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=tariff_calculation
+      - MYSQL_ROOT_PASSWORD=root
+volumes:
+  dba:
