@@ -12,9 +12,14 @@ class Updater
     public function update(RegisteredCoin $registeredCoin): void
     {
         $id = $registeredCoin->getId();
+        $money = $registeredCoin->getMoney();
 
         if (!$this->updaterGateway->checkIfCoinExists($id)) {
             throw new \InvalidArgumentException('Coin not found!');
+        }
+
+        if ($this->updaterGateway->checkIfMoneyAreNotInUse($money, $id)) {
+            throw new \InvalidArgumentException('Money already in use!');
         }
 
         $this->updaterGateway->update($registeredCoin);

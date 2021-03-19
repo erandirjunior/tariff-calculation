@@ -9,4 +9,6 @@ interface UpdaterGateway
     public function update(RegisteredCoin $registeredCoin): bool;
 
     public function checkIfCoinExists(int $id): bool;
+
+    public function checkIfMoneyAreNotInUse(string $money, int $id): bool;
 }

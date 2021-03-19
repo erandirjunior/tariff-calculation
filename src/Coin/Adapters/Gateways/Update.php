@@ -23,4 +23,9 @@ class Update implements UpdaterGateway
     {
         return $this->updateUnit->checkIfCoinExists($id);
     }
+
+    public function checkIfMoneyAreNotInUse(string $money, int $id): bool
+    {
+        return $this->updateUnit->checkIfMoneyAreNotInUse($money, $id);
+    }
 }

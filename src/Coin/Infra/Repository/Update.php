@@ -26,4 +26,13 @@ class Update implements UpdateUnit
         $finder = new FindByIdentifier($this->pdo);
         return !!$finder->find($id);
     }
+
+    public function checkIfMoneyAreNotInUse(string $money, int $id): bool
+    {
+        $stmt = $this->pdo->prepare('SELECT id FROM coin WHERE money = ? AND id <> ?');
+        $stmt->bindValue(1, $money);
+        $stmt->bindValue(2, $id);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
 }
