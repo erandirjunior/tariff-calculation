@@ -2,9 +2,10 @@
 
 namespace SRC\RoomCoin\Infra\ViewModel;
 
+use SRC\RoomCoin\Adapters\Presenters\FindAllByHotelVM;
 use SRC\RoomCoin\Adapters\Presenters\FindAllVM;
 
-class FindAll implements FindAllVM
+class FindAll implements FindAllVM, FindAllByHotelVM
 {
     public function __construct(private array $data = [])
     {}
