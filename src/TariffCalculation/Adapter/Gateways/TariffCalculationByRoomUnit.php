@@ -9,4 +9,6 @@ interface TariffCalculationByRoomUnit
     public function getProfitMarginByCoinRequested(int $coinId): array;
 
     public function getMoney(int $coinId): array;
+
+    public function getSallerProfitMargin(int $sallerId): array;
 }

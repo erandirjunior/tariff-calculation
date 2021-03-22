@@ -15,7 +15,7 @@ class TariffCalculationByRoom
         $this->formatter = new FormatterValue();
     }
 
-    public function calculate($roomId, $coinIdBase, $coinIdToConvertion): void
+    public function calculate($roomId, $coinIdBase, $coinIdToConvertion, $sallerId): void
     {
         $roomPrice = $this->tariffGateway->getRoomPriceByCoin($roomId, $coinIdBase);
         $profitMargin = $this->tariffGateway->getProfitMargin($coinIdToConvertion);
@@ -23,11 +23,13 @@ class TariffCalculationByRoom
         $baseCoin = $this->getMoney($coinIdBase);
         $currentExchangeBase = $this->getCurrentExchange($baseCoin);
         $currentExchangeConversion = $this->getCurrentExchange($userNeedCoin);
+        $sallerProfitMargin = $this->tariffGateway->getSallerProfitMargin($sallerId);
         $price = $this->getRoomPrice(
             $roomPrice,
             $profitMargin,
             $currentExchangeBase,
-            $currentExchangeConversion
+            $currentExchangeConversion,
+            $sallerProfitMargin
         );
 
         $this->presenter->setData($price);
@@ -38,9 +40,11 @@ class TariffCalculationByRoom
         float $profitMargin,
         float $currentExchangeBase,
         float $currentExchangeConversion,
+        float $sallerProfitMargin,
     ): float
     {
         $currentExchange = $this->getValueConvertedCurrency($currentExchangeBase, $currentExchangeConversion);
+        $roomPrice += $roomPrice / 100 * $sallerProfitMargin;
 
         if ($profitMargin === 0) {
             return $roomPrice * $currentExchange;
