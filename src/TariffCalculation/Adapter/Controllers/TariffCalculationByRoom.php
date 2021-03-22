@@ -16,7 +16,7 @@ class TariffCalculationByRoom
     {
     }
 
-    public function handle(int $fromCoinId, int $toCoinId, int $roomId, int $sallerId)
+    public function handle(int $fromCoinId, int $toCoinId, int $roomId, int $sellerId)
     {
         $domain = new \SRC\TariffCalculation\Domain\TariffCalculationByRoom(
             $this->tariffCalculationByRoom,
@@ -24,6 +24,6 @@ class TariffCalculationByRoom
             $this->presenterByRoom
         );
 
-        $domain->calculate($roomId, $fromCoinId, $toCoinId, $sallerId);
+        $domain->calculate($roomId, $fromCoinId, $toCoinId, $sellerId);
     }
 }

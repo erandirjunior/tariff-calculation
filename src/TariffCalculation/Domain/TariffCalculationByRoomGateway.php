@@ -8,7 +8,7 @@ interface TariffCalculationByRoomGateway
 
     public function getProfitMargin(int $coinId): float;
 
-    public function getSallerProfitMargin(int $sallerId): float;
+    public function getSellerProfitMargin(int $sellerId): float;
 
     public function getMoney(int $coinId): string;
 }

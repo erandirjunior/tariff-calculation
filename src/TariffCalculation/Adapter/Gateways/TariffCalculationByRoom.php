@@ -44,12 +44,12 @@ class TariffCalculationByRoom implements TariffCalculationByRoomGateway
         return $content['money'];
     }
 
-    public function getSallerProfitMargin(int $sallerId): float
+    public function getSellerProfitMargin(int $sellerId): float
     {
-        $content = $this->tariffCalculationByRoomUnit->getSallerProfitMargin($sallerId);
+        $content = $this->tariffCalculationByRoomUnit->getSellerProfitMargin($sellerId);
 
         if (!$content) {
-            throw new \InvalidArgumentException('Profit Margin not found to saller requested!');
+            throw new \InvalidArgumentException('Profit Margin not found to seller requested!');
         }
 
         return $content['profit_margin'];

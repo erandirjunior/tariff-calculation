@@ -28,9 +28,9 @@ class TariffCalculationByRoom extends Action
         $coinFrom = $this->body['coinFrom'];
         $coinTo = $this->body['coinTo'];
         $roomId = $this->args['id'];
-        $saller = $this->body['sallerId'];
+        $seller = $this->body['sellerId'];
 
-        $controller->handle($coinFrom, $coinTo, $roomId, $saller);
+        $controller->handle($coinFrom, $coinTo, $roomId, $seller);
         return JsonResponse::build(200, $this->presenterByRoom->getData());
     }
 }

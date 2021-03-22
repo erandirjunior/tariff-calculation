@@ -13,9 +13,9 @@ class FindAll implements FinderAllPresenter
     public function setData(RoomPriceContainer $roomPriceContainer): void
     {
         foreach ($roomPriceContainer->getData() as $room) {
-            $this->findAllVM->setData($room->getRoomId(),
+            $this->findAllVM->setData(
+                $room->getRoomId(),
                 $room->getCoinId(),
-                $room->getPrice(),
                 $room->getId()
             );
         }

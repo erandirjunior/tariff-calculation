@@ -2,10 +2,9 @@
 
 namespace SRC\RoomCoin\Infra\ViewModel;
 
-use SRC\RoomCoin\Adapters\Presenters\FindAllByHotelVM;
 use SRC\RoomCoin\Adapters\Presenters\FindAllVM;
 
-class FindAll implements FindAllVM, FindAllByHotelVM
+class FindAll implements FindAllVM
 {
     public function __construct(private array $data = [])
     {}
@@ -15,12 +14,11 @@ class FindAll implements FindAllVM, FindAllByHotelVM
         return $this->data;
     }
 
-    public function setData(int $roomId, int $coinId, float $price, int $id): void
+    public function setData(int $roomId, int $coinId, int $id): void
     {
         $this->data[] = [
             'roomId' => $roomId,
             'coinId' => $coinId,
-            'price' => $price,
             'id' => $id
         ];
     }

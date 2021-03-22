@@ -30,10 +30,10 @@ class TariffCalculationByRoom implements TariffCalculationByRoomUnit
         return $this->getProfitMarginByCoinRequested($coinId);
     }
 
-    public function getSallerProfitMargin(int $sallerId): array
+    public function getSellerProfitMargin(int $sellerId): array
     {
-        $saller = new \SRC\Saller\Infra\Repository\FindByIdentifier($this->pdo);
-        $data = $saller->find($sallerId);
+        $seller = new \SRC\Seller\Infra\Repository\FindByIdentifier($this->pdo);
+        $data = $seller->find($sellerId);
         return $data ? $data : [];
     }
 }

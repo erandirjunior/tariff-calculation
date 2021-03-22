@@ -14,12 +14,11 @@ class FindByIdentifier implements FindByIdentifierVM
         return $this->data;
     }
 
-    public function setData(int $roomId, int $coinId, float $price, int $id): void
+    public function setData(int $roomId, int $coinId, int $id): void
     {
         $this->data = [
             'roomId' => $roomId,
             'coinId' => $coinId,
-            'price' => $price,
             'id' => $id
         ];
     }

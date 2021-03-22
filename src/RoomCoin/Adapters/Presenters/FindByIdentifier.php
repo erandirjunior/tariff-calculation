@@ -15,7 +15,6 @@ class FindByIdentifier implements Presenter
         $this->findByCodeVM->setData(
             $registeredRoomPrice->getRoomId(),
             $registeredRoomPrice->getCoinId(),
-            $registeredRoomPrice->getPrice(),
             $registeredRoomPrice->getId()
         );
     }
