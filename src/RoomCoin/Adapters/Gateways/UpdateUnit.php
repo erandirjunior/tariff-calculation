@@ -9,4 +9,6 @@ interface UpdateUnit
     public function checkIfRoomPriceExists(int $roomId, int $id): bool;
 
     public function checkIfRoomPriceAreNotInUse(int $roomId, int $coinId, int $id): bool;
+
+    public function checkIfCoinExists(int $coinId): bool;
 }

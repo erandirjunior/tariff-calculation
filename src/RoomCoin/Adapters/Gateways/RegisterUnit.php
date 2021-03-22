@@ -9,4 +9,6 @@ interface RegisterUnit
     public function roomPrice(int $roomId, int $coinId): bool;
 
     public function find(int $roomId, int $id): array;
+
+    public function checkIfCoinExists(int $coinId): bool;
 }

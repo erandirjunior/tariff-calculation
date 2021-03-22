@@ -33,4 +33,11 @@ class Register implements RegisterUnit
         $stmt->execute();
         return $stmt->rowCount() > 0;
     }
+
+    public function checkIfCoinExists(int $coinId): bool
+    {
+        $room = (new \SRC\Coin\Infra\Repository\FindByIdentifier($this->pdo))
+            ->find($coinId);
+        return !!$room;
+    }
 }

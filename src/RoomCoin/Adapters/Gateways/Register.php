@@ -27,8 +27,13 @@ class Register implements RegisterGateway
         );
     }
 
-    public function checkIfRoomIsInUse(int $roomId, int $coinId): bool
+    public function registerIfRoomCoinIsUnique(int $roomId, int $coinId): bool
     {
         return $this->registerUnit->roomPrice($roomId, $coinId);
+    }
+
+    public function checkIfCoinExists(int $coinId): bool
+    {
+        return $this->registerUnit->checkIfCoinExists($coinId);
     }
 }

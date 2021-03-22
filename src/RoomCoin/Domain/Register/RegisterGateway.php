@@ -8,5 +8,7 @@ interface RegisterGateway
 {
     public function register(RoomCoin $roomPrice): RegisteredRoomCoin;
 
-    public function checkIfRoomIsInUse(int $roomId, int $coinId): bool;
+    public function registerIfRoomCoinIsUnique(int $roomId, int $coinId): bool;
+
+    public function checkIfCoinExists(int $coinId): bool;
 }

@@ -29,4 +29,9 @@ class Update implements UpdaterGateway
     {
         return $this->updateUnit->checkIfRoomPriceAreNotInUse($roomId, $coinId, $id);
     }
+
+    public function checkIfCoinExists(int $coinId): bool
+    {
+        return $this->updateUnit->checkIfCoinExists($coinId);
+    }
 }

@@ -10,25 +10,35 @@ class Register
     )
     {}
 
-    public function register(RoomCoin $roomPrice): void
+    public function register(RoomCoin $roomCoin): void
     {
-        $this->registerIfRoomIsUnique($roomPrice);
+        $this->checkIfCoinExists($roomCoin);
     }
 
-    public function registerIfRoomIsUnique(RoomCoin $roomPrice): void
+    private function checkIfCoinExists(RoomCoin $roomCoin): void
     {
-        $roomId = $roomPrice->getRoomId();
-        $coinId = $roomPrice->getCoinId();
-        if ($this->registerGateway->checkIfRoomIsInUse($roomId, $coinId)) {
-            throw new \DomainException('Room price in use!');
+        if (!$this->registerGateway->checkIfCoinExists($roomCoin->getCoinId())) {
+            throw new \InvalidArgumentException('Coin is not valid!');
         }
 
-        $this->registerData($roomPrice);
+        $this->registerIfRoomCoinIsUnique($roomCoin);
     }
 
-    private function registerData(RoomCoin $roomPrice): void
+    public function registerIfRoomCoinIsUnique(RoomCoin $roomCoin): void
     {
-        $registeredRoomPrice = $this->registerGateway->register($roomPrice);
+        $roomId = $roomCoin->getRoomId();
+        $coinId = $roomCoin->getCoinId();
+        if ($this->registerGateway->registerIfRoomCoinIsUnique($roomId, $coinId)) {
+            $msg = "The room price for this coin is already registered.";
+            throw new \DomainException($msg);
+        }
+
+        $this->registerData($roomCoin);
+    }
+
+    private function registerData(RoomCoin $roomCoin): void
+    {
+        $registeredRoomPrice = $this->registerGateway->register($roomCoin);
         $this->presenter->addData($registeredRoomPrice);
     }
 }
