@@ -4,12 +4,16 @@ namespace SRC\TariffCalculation\Domain;
 
 class TariffCalculationByRoom
 {
+    private FormatterValue $formatter;
+
     public function __construct(
         private TariffCalculationByRoomGateway $tariffGateway,
         private GetCurrentExchangeValue $currentExchangeValue,
         private Presenter $presenter
     )
-    {}
+    {
+        $this->formatter = new FormatterValue();
+    }
 
     public function calculate($roomId, $coinIdBase, $coinIdToConvertion): void
     {
@@ -43,7 +47,7 @@ class TariffCalculationByRoom
         }
 
         $roomPrice += $roomPrice / 100 * $profitMargin;
-        return $roomPrice * $currentExchange;
+        return $this->formatValue($roomPrice * $currentExchange);
     }
 
     private function getCurrentExchange(string $money): float
@@ -62,6 +66,11 @@ class TariffCalculationByRoom
     ): float
     {
         $value = $currentExchangeBase / $currentExchangeConversion;
-        return floatval(substr((string) $value, 0, 4));
+        return $this->formatValue($value);
+    }
+
+    private function formatValue(float $value): float
+    {
+        return $this->formatter->formatter($value);
     }
 }
