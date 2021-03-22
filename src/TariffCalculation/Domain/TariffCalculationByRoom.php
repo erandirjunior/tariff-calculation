@@ -11,11 +11,11 @@ class TariffCalculationByRoom
     )
     {}
 
-    public function calculate($roomId, $coinIdBase, $coinIdToConversition): void
+    public function calculate($roomId, $coinIdBase, $coinIdToConvertion): void
     {
         $roomPrice = $this->tariffGateway->getRoomPriceByCoin($roomId, $coinIdBase);
-        $profitMargin = $this->tariffGateway->getProfitMargin($coinIdToConversition);
-        $userNeedCoin = $this->getMoney($coinIdToConversition);
+        $profitMargin = $this->tariffGateway->getProfitMargin($coinIdToConvertion);
+        $userNeedCoin = $this->getMoney($coinIdToConvertion);
         $baseCoin = $this->getMoney($coinIdBase);
         $currentExchangeBase = $this->getCurrentExchange($baseCoin);
         $currentExchangeConversion = $this->getCurrentExchange($userNeedCoin);
