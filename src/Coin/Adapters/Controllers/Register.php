@@ -18,8 +18,8 @@ class Register
             $this->registerGateway,
             $this->presenter
         );
-        $money = new Coin($money, $profitMargin);
+        $coin = new Coin($money, $profitMargin);
 
-        $domain->register($money);
+        $domain->register($coin);
     }
 }

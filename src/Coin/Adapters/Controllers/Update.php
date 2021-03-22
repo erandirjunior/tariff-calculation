@@ -13,10 +13,10 @@ class Update
     {
     }
 
-    public function handle(string $money, float $profitMargin, int $id)
+    public function handle(string $coin, float $profitMargin, int $id)
     {
         $domain = new Updater($this->updaterGateway);
-        $coin = new RegisteredCoin($money, $profitMargin, $id);
+        $coin = new RegisteredCoin($coin, $profitMargin, $id);
         $domain->update($coin);
     }
 }
