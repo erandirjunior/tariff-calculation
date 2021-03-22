@@ -2,6 +2,11 @@
 
 $app = \Slim\Factory\AppFactory::createFromContainer($container);
 
+$app->get('/', function (){
+   $a = new \SRC\TariffCalculation\Infra\ExternalService\GetCurrentExchange();
+   var_dump($a->getValue('USD'));
+});
+
 $app->group('/coins', function (\Slim\Routing\RouteCollectorProxy $group) {
     $group->get('/{id:[0-9]+}', \SRC\Coin\Infra\Http\FinderByIdentifier::class);
 
@@ -35,6 +40,21 @@ $app->group('/hotels', function (\Slim\Routing\RouteCollectorProxy $group) {
         $group->delete('/{id:[0-9]+}', \SRC\Room\Infra\Http\Destroy::class);
 
         $group->put('/{id:[0-9]+}', \SRC\Room\Infra\Http\Update::class);
+
+        $group->post('/{id:[0-9]+}/prices',
+            \SRC\TariffCalculation\Infra\Http\TariffCalculationByRoom::class);
+
+        $group->group('/{roomId:[0-9]+}/coins', function (\Slim\Routing\RouteCollectorProxy $group) {
+            $group->get('/{id:[0-9]+}', \SRC\RoomCoin\Infra\Http\FinderByIdentifier::class);
+
+            $group->get('', \SRC\RoomCoin\Infra\Http\FindAll::class);
+
+            $group->post('', \SRC\RoomCoin\Infra\Http\Register::class);
+
+            $group->delete('/{id:[0-9]+}', \SRC\RoomCoin\Infra\Http\Destroy::class);
+
+            $group->put('/{id:[0-9]+}', \SRC\RoomCoin\Infra\Http\Update::class);
+        });
     });
 });
 

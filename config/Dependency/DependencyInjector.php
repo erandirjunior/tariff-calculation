@@ -19,7 +19,14 @@ use SRC\Coin\Infra\Validator\Register;
 use SRC\Coin\Adapters\Gateways\FindByIdentifierUnit;
 use SRC\Coin\Adapters\Presenters\FindByIdentifierVM;
 use SRC\Coin\Infra\Repository\FindByIdentifier;
-use SRC\Shared\Presenter\Presenter;
+use SRC\TariffCalculation\Adapter\Gateways\GetCurrentExchangeUnit;
+use SRC\TariffCalculation\Adapter\Gateways\GetCurrentExchangeValue;
+use SRC\TariffCalculation\Adapter\Gateways\TariffCalculationByRoomUnit;
+use SRC\TariffCalculation\Adapter\Presenters\PresenterByRoom;
+use SRC\TariffCalculation\Adapter\Presenters\PresenterVMByRoom;
+use SRC\TariffCalculation\Infra\Repository\GetCurrentExchange;
+use SRC\TariffCalculation\Infra\Repository\TariffCalculationByRoom;
+use function DI\autowire;
 
 class DependencyInjector
 {
@@ -97,6 +104,36 @@ class DependencyInjector
             \SRC\Room\Adapters\Gateways\UpdateUnit::class => \DI\autowire(\SRC\Room\Infra\Repository\Update::class),
             \SRC\Room\Adapters\Gateways\Update::class => \DI\autowire(\SRC\Room\Adapters\Gateways\Update::class),
 
+            // Room Price
+            \SRC\RoomCoin\Adapters\Gateways\RegisterUnit::class => \DI\autowire(\SRC\RoomCoin\Infra\Repository\Register::class),
+            \SRC\RoomCoin\Adapters\Presenters\RegisterVM::class => \DI\autowire(\SRC\RoomCoin\Infra\ViewModel\Register::class),
+            \SRC\RoomCoin\Infra\Validator\Register::class => \DI\autowire(\SRC\RoomCoin\Infra\Validator\Register::class),
+            \SRC\RoomCoin\Adapters\Gateways\Register::class => \DI\autowire(\SRC\RoomCoin\Adapters\Gateways\Register::class),
+
+            \SRC\RoomCoin\Adapters\Gateways\FindByIdentifierUnit::class => \DI\autowire(\SRC\RoomCoin\Infra\Repository\FindByIdentifier::class),
+            \SRC\RoomCoin\Infra\Repository\FindByIdentifier::class => \DI\autowire(\SRC\RoomCoin\Infra\Repository\FindByIdentifier::class),
+            \SRC\RoomCoin\Adapters\Presenters\FindByIdentifierVM::class => \DI\autowire(\SRC\RoomCoin\Infra\ViewModel\FindByIdentifier::class),
+            \SRC\RoomCoin\Adapters\Gateways\FinderByIdentifier::class => \DI\autowire(\SRC\RoomCoin\Adapters\Gateways\FinderByIdentifier::class),
+
+            \SRC\RoomCoin\Adapters\Gateways\FindAllUnit::class => \DI\autowire(\SRC\RoomCoin\Infra\Repository\FindAll::class),
+            \SRC\RoomCoin\Infra\Repository\FindAll::class => \DI\autowire(\SRC\RoomCoin\Infra\Repository\FindAll::class),
+            \SRC\RoomCoin\Adapters\Presenters\FindAllVM::class => \DI\autowire(\SRC\RoomCoin\Infra\ViewModel\FindAll::class),
+            \SRC\RoomCoin\Adapters\Gateways\FindAll::class => \DI\autowire(\SRC\RoomCoin\Adapters\Gateways\FindAll::class),
+
+            \SRC\RoomCoin\Adapters\Gateways\DestroyUnit::class => \DI\autowire(\SRC\RoomCoin\Infra\Repository\Destroy::class),
+            \SRC\RoomCoin\Adapters\Gateways\Destroy::class => \DI\autowire(\SRC\RoomCoin\Adapters\Gateways\Destroy::class),
+
+            \SRC\RoomCoin\Adapters\Gateways\UpdateUnit::class => \DI\autowire(\SRC\RoomCoin\Infra\Repository\Update::class),
+            \SRC\RoomCoin\Adapters\Gateways\Update::class => \DI\autowire(\SRC\RoomCoin\Adapters\Gateways\Update::class),
+
+            //TODO:
+
+            TariffCalculationByRoomUnit::class => \DI\autowire(TariffCalculationByRoom::class),
+            \SRC\TariffCalculation\Adapter\Gateways\TariffCalculationByRoom::class => \DI\autowire(\SRC\TariffCalculation\Adapter\Gateways\TariffCalculationByRoom::class),
+            GetCurrentExchangeUnit::class => \DI\autowire(GetCurrentExchange::class),
+            GetCurrentExchangeValue::class => \DI\autowire(GetCurrentExchangeValue::class),
+            PresenterVMByRoom::class => \DI\autowire(\SRC\TariffCalculation\Infra\ViewModel\TariffCalculationByRoom::class),
+            PresenterByRoom::class => \DI\autowire(PresenterByRoom::class),
         ]);
 
         $container = $containerBuild->build();
