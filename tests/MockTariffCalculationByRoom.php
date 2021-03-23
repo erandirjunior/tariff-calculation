@@ -63,4 +63,11 @@ class MockTariffCalculationByRoom implements TariffCalculationByRoomUnit
             'money' => $value
         ];
     }
+
+    public function getSellerProfitMargin(int $sellerId): array
+    {
+        return [
+            'profit_margin' => $sellerId
+        ];
+    }
 }
