@@ -6,7 +6,7 @@ use SRC\Coin\Domain\RegisteredCoin;
 
 interface RegisterGateway
 {
-    public function register(Coin $money): RegisteredCoin;
+    public function register(Coin $coin): RegisteredCoin;
 
-    public function checkIfMoneyIsInUse(string $name): bool;
+    public function checkIfMoneyIsInUse(string $money): bool;
 }

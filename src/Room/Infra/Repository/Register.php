@@ -18,11 +18,6 @@ class Register implements RegisterUnit
         return $this->pdo->lastInsertId();
     }
 
-    public function find(int $hotelId, int $id): array
-    {
-        return (new FindByIdentifier($this->pdo))->find($hotelId, $id);
-    }
-
     public function checkRoomIsInUse(string $room, int $hotelId): bool
     {
         $stmt = $this->pdo->prepare('SELECT id FROM room WHERE room = ? AND hotel_id = ?');

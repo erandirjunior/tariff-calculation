@@ -20,11 +20,6 @@ class Register implements RegisterUnit
         return $this->pdo->lastInsertId();
     }
 
-    public function find(int $roomId, int $id): array
-    {
-        return (new FindByIdentifier($this->pdo))->find($roomId, $id);
-    }
-
     public function roomPrice(int $roomId, int $coinId): bool
     {
         $stmt = $this->pdo->prepare('SELECT id FROM room_coin WHERE room_id = ? AND coin_id = ?');

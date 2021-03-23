@@ -11,19 +11,18 @@ class Register implements RegisterGateway
     public function __construct(private RegisterUnit $registerUnit)
     {}
 
-    public function register(Coin $money): RegisteredCoin
+    public function register(Coin $coin): RegisteredCoin
     {
-        $id = $this->registerUnit->register($money->getMoney(), $money->getProfitMargin());
-        $data = $this->registerUnit->find($id);
+        $id = $this->registerUnit->register($coin->getMoney(), $coin->getProfitMargin());
         return new RegisteredCoin(
-            $data['money'],
-            $data['profit_margin'],
-            $data['id']
+            $coin->getMoney(),
+            $coin->getProfitMargin(),
+            $id
         );
     }
 
-    public function checkIfMoneyIsInUse(string $name): bool
+    public function checkIfMoneyIsInUse(string $money): bool
     {
-        return $this->registerUnit->checkIfMoneyIsInUse($name);
+        return $this->registerUnit->checkIfMoneyIsInUse($money);
     }
 }

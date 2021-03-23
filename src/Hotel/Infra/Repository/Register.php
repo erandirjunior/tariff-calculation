@@ -17,11 +17,6 @@ class Register implements RegisterUnit
         return $this->pdo->lastInsertId();
     }
 
-    public function find(int $id): array
-    {
-        return (new FindByIdentifier($this->pdo))->find($id);
-    }
-
     public function checkINameIsInUse(string $name): bool
     {
         $stmt = $this->pdo->prepare('SELECT id FROM hotel WHERE name = ?');

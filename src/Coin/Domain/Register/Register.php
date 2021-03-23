@@ -19,7 +19,7 @@ class Register
     {
         $moneyType = $money->getMoney();
         if ($this->registerGateway->checkIfMoneyIsInUse($moneyType)) {
-            throw new \DomainException('Coin type already registered!');
+            throw new \DomainException('Money type already registered!');
         }
 
         $this->registerData($money);

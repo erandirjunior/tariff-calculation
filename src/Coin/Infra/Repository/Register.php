@@ -25,9 +25,4 @@ class Register implements RegisterUnit
         $stmt->execute();
         return $stmt->rowCount() > 0;
     }
-
-    public function find(int $id): array
-    {
-        return (new FindByIdentifier($this->pdo))->find($id);
-    }
 }

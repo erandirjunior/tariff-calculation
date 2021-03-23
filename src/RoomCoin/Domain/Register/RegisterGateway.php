@@ -6,7 +6,7 @@ use SRC\RoomCoin\Domain\RegisteredRoomCoin;
 
 interface RegisterGateway
 {
-    public function register(RoomCoin $roomPrice): RegisteredRoomCoin;
+    public function register(RoomCoin $roomCoin): RegisteredRoomCoin;
 
     public function registerIfRoomCoinIsUnique(int $roomId, int $coinId): bool;
 

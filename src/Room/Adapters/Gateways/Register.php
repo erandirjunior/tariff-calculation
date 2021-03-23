@@ -14,11 +14,10 @@ class Register implements RegisterGateway
     public function register(Room $room): RegisteredRoom
     {
         $id = $this->registerUnit->register($room->getRoom(), $room->getHotel());
-        $data = $this->registerUnit->find($room->getHotel(), $id);
         return new RegisteredRoom(
-            $data['room'],
-            $data['hotel_id'],
-            $data['id']
+            $room->getRoom(),
+            $room->getHotel(),
+            $id
         );
     }
 
