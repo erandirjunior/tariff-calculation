@@ -1,14 +1,12 @@
 <?php
 
-
 namespace Tests;
-
 
 use SRC\TariffCalculation\Adapter\Gateways\TariffCalculationByRoomUnit;
 
 class MockTariffCalculationByRoom implements TariffCalculationByRoomUnit
 {
-    public function getRoomPriceByCoin(int $roomId, int $coinId): array
+    public function getRoomPriceByCoin(int $roomId, int $coinId, int $hotelId): array
     {
         $value = 0;
         switch ($coinId) {

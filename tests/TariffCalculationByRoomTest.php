@@ -26,19 +26,19 @@ class TariffCalculationByRoomTest extends TestCase
 
     public function testDollarToReal()
     {
-        $this->controller->handle(2, 1, 1, 1);
+        $this->controller->handle(2, 1, 1, 1, 1);
         $this->assertEquals(['price' => 822.64], $this->presenter->getData());
     }
 
     public function testDollarToEUR()
     {
-        $this->controller->handle(2, 3, 1, 1);
+        $this->controller->handle(2, 3, 1, 1, 1);
         $this->assertEquals(['price' => 144.6], $this->presenter->getData());
     }
 
     public function testEURToReal()
     {
-        $this->controller->handle(3, 1, 1, 2);
+        $this->controller->handle(3, 1, 1, 2, 1);
         $this->assertEquals(['price' => 1334.16], $this->presenter->getData());
     }
 }
