@@ -8,7 +8,7 @@ class TariffPrice
         private int $fromCoinId,
         private int $toCoinId,
         private int $roomId,
-        private int $hotelId
+        private int $sellerId
     )
     {}
 
@@ -27,8 +27,8 @@ class TariffPrice
         return $this->roomId;
     }
 
-    public function getHotelId(): int
+    public function getSellerId(): int
     {
-        return $this->hotelId;
+        return $this->sellerId;
     }
 }
