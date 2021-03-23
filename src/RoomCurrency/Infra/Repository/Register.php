@@ -1,0 +1,39 @@
+<?php
+
+namespace SRC\RoomCoin\Infra\Repository;
+
+use SRC\RoomCoin\Adapters\Gateways\RegisterUnit;
+
+class Register implements RegisterUnit
+{
+    public function __construct(private \PDO $pdo)
+    {}
+
+    public function register(int $roomId, int $currencyId, float $price, int $hotelId): int
+    {
+        $sql = 'INSERT INTO room_coin (room_id, coin_id, price, hotel_id) VALUE (?, ?, ?, ?)';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(1, $roomId);
+        $stmt->bindValue(2, $currencyId);
+        $stmt->bindValue(3, $price);
+        $stmt->bindValue(4, $hotelId);
+        $stmt->execute();
+        return $this->pdo->lastInsertId();
+    }
+
+    public function roomPrice(int $roomId, int $currencyId): bool
+    {
+        $stmt = $this->pdo->prepare('SELECT id FROM room_coin WHERE room_id = ? AND coin_id = ?');
+        $stmt->bindValue(1, $roomId);
+        $stmt->bindValue(2, $currencyId);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
+
+    public function checkIfCoinExists(int $currencyId): bool
+    {
+        $room = (new \SRC\Coin\Infra\Repository\FindByIdentifier($this->pdo))
+            ->find($currencyId);
+        return !!$room;
+    }
+}
