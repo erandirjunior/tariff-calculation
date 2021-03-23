@@ -126,14 +126,77 @@ class DependencyInjector
             \SRC\RoomCoin\Adapters\Gateways\UpdateUnit::class => \DI\autowire(\SRC\RoomCoin\Infra\Repository\Update::class),
             \SRC\RoomCoin\Adapters\Gateways\Update::class => \DI\autowire(\SRC\RoomCoin\Adapters\Gateways\Update::class),
 
-            //TODO:
-
+            // Tariff Calculation
             TariffCalculationByRoomUnit::class => \DI\autowire(TariffCalculationByRoom::class),
             \SRC\TariffCalculation\Adapter\Gateways\TariffCalculationByRoom::class => \DI\autowire(\SRC\TariffCalculation\Adapter\Gateways\TariffCalculationByRoom::class),
             GetCurrentExchangeUnit::class => \DI\autowire(GetCurrentExchange::class),
             GetCurrentExchangeValue::class => \DI\autowire(GetCurrentExchangeValue::class),
             PresenterVMByRoom::class => \DI\autowire(\SRC\TariffCalculation\Infra\ViewModel\TariffCalculationByRoom::class),
             PresenterByRoom::class => \DI\autowire(PresenterByRoom::class),
+
+            // User
+            \SRC\User\Adapters\Gateways\RegisterUnit::class => \DI\autowire(\SRC\User\Infra\Repository\Register::class),
+            \SRC\User\Adapters\Presenters\RegisterVM::class => \DI\autowire(\SRC\User\Infra\ViewModel\Register::class),
+            \SRC\User\Infra\Validator\Register::class => \DI\autowire(\SRC\User\Infra\Validator\Register::class),
+            \SRC\User\Adapters\Gateways\Register::class => \DI\autowire(\SRC\User\Adapters\Gateways\Register::class),
+
+            \SRC\User\Adapters\Gateways\FindByIdentifierUnit::class => \DI\autowire(\SRC\User\Infra\Repository\FindByIdentifier::class),
+            \SRC\User\Infra\Repository\FindByIdentifier::class => \DI\autowire(\SRC\User\Infra\Repository\FindByIdentifier::class),
+            \SRC\User\Adapters\Presenters\FindByIdentifierVM::class => \DI\autowire(\SRC\User\Infra\ViewModel\FindByIdentifier::class),
+            \SRC\User\Adapters\Gateways\FinderByIdentifier::class => \DI\autowire(\SRC\User\Adapters\Gateways\FinderByIdentifier::class),
+
+            \SRC\User\Adapters\Gateways\FindAllUnit::class => \DI\autowire(\SRC\User\Infra\Repository\FindAll::class),
+            \SRC\User\Infra\Repository\FindAll::class => \DI\autowire(\SRC\User\Infra\Repository\FindAll::class),
+            \SRC\User\Adapters\Presenters\FindAllVM::class => \DI\autowire(\SRC\User\Infra\ViewModel\FindAll::class),
+            \SRC\User\Adapters\Gateways\FindAll::class => \DI\autowire(\SRC\User\Adapters\Gateways\FindAll::class),
+
+            \SRC\User\Adapters\Gateways\DestroyUnit::class => \DI\autowire(\SRC\User\Infra\Repository\Destroy::class),
+            \SRC\User\Adapters\Gateways\Destroy::class => \DI\autowire(\SRC\User\Adapters\Gateways\Destroy::class),
+
+            \SRC\User\Adapters\Gateways\UpdateUnit::class => \DI\autowire(\SRC\User\Infra\Repository\Update::class),
+            \SRC\User\Adapters\Gateways\Update::class => \DI\autowire(\SRC\User\Adapters\Gateways\Update::class),
+
+            // Seller
+            \SRC\Seller\Adapters\Gateways\RegisterUnit::class => \DI\autowire(\SRC\Seller\Infra\Repository\Register::class),
+            \SRC\Seller\Adapters\Presenters\RegisterVM::class => \DI\autowire(\SRC\Seller\Infra\ViewModel\Register::class),
+            \SRC\Seller\Infra\Validator\Register::class => \DI\autowire(\SRC\Seller\Infra\Validator\Register::class),
+            \SRC\Seller\Adapters\Gateways\Register::class => \DI\autowire(\SRC\Seller\Adapters\Gateways\Register::class),
+
+            \SRC\Seller\Adapters\Gateways\FindByIdentifierUnit::class => \DI\autowire(\SRC\Seller\Infra\Repository\FindByIdentifier::class),
+            \SRC\Seller\Infra\Repository\FindByIdentifier::class => \DI\autowire(\SRC\Seller\Infra\Repository\FindByIdentifier::class),
+            \SRC\Seller\Adapters\Presenters\FindByIdentifierVM::class => \DI\autowire(\SRC\Seller\Infra\ViewModel\FindByIdentifier::class),
+            \SRC\Seller\Adapters\Gateways\FinderByIdentifier::class => \DI\autowire(\SRC\Seller\Adapters\Gateways\FinderByIdentifier::class),
+
+            \SRC\Seller\Adapters\Gateways\FindAllUnit::class => \DI\autowire(\SRC\Seller\Infra\Repository\FindAll::class),
+            \SRC\Seller\Infra\Repository\FindAll::class => \DI\autowire(\SRC\Seller\Infra\Repository\FindAll::class),
+            \SRC\Seller\Adapters\Presenters\FindAllVM::class => \DI\autowire(\SRC\Seller\Infra\ViewModel\FindAll::class),
+            \SRC\Seller\Adapters\Gateways\FindAll::class => \DI\autowire(\SRC\Seller\Adapters\Gateways\FindAll::class),
+
+            \SRC\Seller\Adapters\Gateways\DestroyUnit::class => \DI\autowire(\SRC\Seller\Infra\Repository\Destroy::class),
+            \SRC\Seller\Adapters\Gateways\Destroy::class => \DI\autowire(\SRC\Seller\Adapters\Gateways\Destroy::class),
+
+            \SRC\Seller\Adapters\Gateways\UpdateUnit::class => \DI\autowire(\SRC\Seller\Infra\Repository\Update::class),
+            \SRC\Seller\Adapters\Gateways\Update::class => \DI\autowire(\SRC\Seller\Adapters\Gateways\Update::class),
+
+            // Booking
+            \SRC\Booking\Adapters\Gateways\RegisterUnit::class => \DI\autowire(\SRC\Booking\Infra\Repository\Register::class),
+            \SRC\Booking\Adapters\Presenters\RegisterVM::class => \DI\autowire(\SRC\Booking\Infra\ViewModel\Register::class),
+            \SRC\Booking\Infra\Validator\Register::class => \DI\autowire(\SRC\Booking\Infra\Validator\Register::class),
+            \SRC\Booking\Adapters\Gateways\Register::class => \DI\autowire(\SRC\Booking\Adapters\Gateways\Register::class),
+            \SRC\Booking\Infra\Factory\TariffCalculationFactory::class => \DI\autowire(\SRC\Booking\Infra\Factory\TariffCalculationFactory::class),
+
+            \SRC\Booking\Adapters\Gateways\DestroyUnit::class => \DI\autowire(\SRC\Booking\Infra\Repository\Destroy::class),
+            \SRC\Booking\Adapters\Gateways\Destroy::class => \DI\autowire(\SRC\Booking\Adapters\Gateways\Destroy::class),
+
+            \SRC\Booking\Adapters\Gateways\FindByIdentifierUnit::class => \DI\autowire(\SRC\Booking\Infra\Repository\FindByIdentifier::class),
+            \SRC\Booking\Infra\Repository\FindByIdentifier::class => \DI\autowire(\SRC\Booking\Infra\Repository\FindByIdentifier::class),
+            \SRC\Booking\Adapters\Presenters\FindByIdentifierVM::class => \DI\autowire(\SRC\Booking\Infra\ViewModel\FindByIdentifier::class),
+            \SRC\Booking\Adapters\Gateways\FinderByIdentifier::class => \DI\autowire(\SRC\Booking\Adapters\Gateways\FinderByIdentifier::class),
+
+            \SRC\Booking\Adapters\Gateways\FindAllUnit::class => \DI\autowire(\SRC\Booking\Infra\Repository\FindAll::class),
+            \SRC\Booking\Infra\Repository\FindAll::class => \DI\autowire(\SRC\Booking\Infra\Repository\FindAll::class),
+            \SRC\Booking\Adapters\Presenters\FindAllVM::class => \DI\autowire(\SRC\Booking\Infra\ViewModel\FindAll::class),
+            \SRC\Booking\Adapters\Gateways\FindAll::class => \DI\autowire(\SRC\Booking\Adapters\Gateways\FindAll::class),
         ]);
 
         $container = $containerBuild->build();

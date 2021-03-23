@@ -26,7 +26,6 @@ abstract class Action
         } catch (\DomainException|\InvalidArgumentException $exception) {
             return (new Json())->response(422, $exception->getMessage());
         } catch (\Exception $e) {
-            var_dump($e->getMessage());
             return (new Json())->response(500, 'Internal error!');
         }
     }
