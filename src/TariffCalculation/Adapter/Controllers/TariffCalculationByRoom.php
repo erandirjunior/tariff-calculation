@@ -4,7 +4,7 @@ namespace SRC\TariffCalculation\Adapter\Controllers;
 
 use SRC\TariffCalculation\Adapter\Gateways\GetCurrentExchangeValue;
 use SRC\TariffCalculation\Adapter\Presenters\PresenterByRoom;
-use SRC\TariffCalculation\Domain\TariffPrice;
+use SRC\TariffCalculation\Domain\Tariff;
 
 class TariffCalculationByRoom
 {
@@ -13,17 +13,21 @@ class TariffCalculationByRoom
         private GetCurrentExchangeValue $getCurrentExchangeValue,
         private \SRC\TariffCalculation\Adapter\Gateways\TariffCalculationByRoom $tariffCalculationByRoom
     )
-    {
-    }
+    {}
 
-    public function handle(int $fromCoinId, int $toCoinId, int $roomId, int $sellerId)
+    public function handle(
+        int $coinBase,
+        int $userCoinNeed,
+        int $roomId,
+        int $sellerId
+    )
     {
         $domain = new \SRC\TariffCalculation\Domain\TariffCalculationByRoom(
             $this->tariffCalculationByRoom,
             $this->getCurrentExchangeValue,
             $this->presenterByRoom
         );
-
-        $domain->calculate($roomId, $fromCoinId, $toCoinId, $sellerId);
+        $tariff = new Tariff($userCoinNeed, $coinBase, $roomId, $sellerId);
+        $domain->calculate($tariff);
     }
 }

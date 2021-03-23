@@ -2,24 +2,24 @@
 
 namespace SRC\TariffCalculation\Domain;
 
-class TariffPrice
+class Tariff
 {
     public function __construct(
-        private int $fromCoinId,
-        private int $toCoinId,
+        private int $userCoinNeed,
+        private int $coinBase,
         private int $roomId,
         private int $sellerId
     )
     {}
 
-    public function getFromCoinId(): int
+    public function getUserCoinNeed(): int
     {
-        return $this->fromCoinId;
+        return $this->userCoinNeed;
     }
 
-    public function getToCoinId(): int
+    public function getCoinBase(): int
     {
-        return $this->toCoinId;
+        return $this->coinBase;
     }
 
     public function getRoomId(): int
