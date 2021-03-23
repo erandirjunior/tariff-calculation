@@ -18,8 +18,6 @@ class Seller
             $msg = 'Field name is invalid!';
             throw new \InvalidArgumentException($msg);
         }
-
-        $this->name = strtoupper($this->name);
     }
 
     public function getName(): string
