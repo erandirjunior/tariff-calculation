@@ -11,9 +11,9 @@ class TariffCalculationByRoom implements TariffCalculationByRoomGateway
     )
     {}
 
-    public function getRoomPriceByCoin(int $roomId, int $coinId): float
+    public function getRoomPriceByCoin(int $roomId, int $coinId, int $hotelId): float
     {
-        $content = $this->tariffCalculationByRoomUnit->getRoomPriceByCoin($roomId, $coinId);
+        $content = $this->tariffCalculationByRoomUnit->getRoomPriceByCoin($roomId, $coinId, $hotelId);
 
         if (!$content) {
             throw new \InvalidArgumentException('Room price not found!');

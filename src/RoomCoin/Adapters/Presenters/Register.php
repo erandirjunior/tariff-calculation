@@ -16,6 +16,7 @@ class Register implements Presenter
             'roomId' => $registeredRoomPrice->getRoomId(),
             'coinId' => $registeredRoomPrice->getCoinId(),
             'price' => $registeredRoomPrice->getPrice(),
+            'hotel_id' => $registeredRoomPrice->getHotelId(),
             'id' => $registeredRoomPrice->getId(),
         ];
 

@@ -25,7 +25,9 @@ class Update extends Action
             $this->args['roomId'],
             $this->body['coinId'],
             $this->body['price'],
-            $this->args['id']);
+            $this->args['id'],
+            $this->args['hotelId']
+        );
 
         return JsonResponse::build(204, null);
     }

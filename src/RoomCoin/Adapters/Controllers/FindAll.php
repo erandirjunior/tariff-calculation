@@ -12,9 +12,9 @@ class FindAll
     )
     {}
 
-    public function handle(int $roomId)
+    public function handle(int $roomId, int $hotelId)
     {
         $domain = new FinderAll($this->repository, $this->presenter);
-        $domain->find($roomId);
+        $domain->find($roomId, $hotelId);
     }
 }

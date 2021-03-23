@@ -29,7 +29,7 @@ class Register
         $roomId = $roomCoin->getRoomId();
         $coinId = $roomCoin->getCoinId();
         if ($this->registerGateway->registerIfRoomCoinIsUnique($roomId, $coinId)) {
-            $msg = "The room price for this coin is already registered.";
+            $msg = "The room coin for this hotel's room already be registered.";
             throw new \DomainException($msg);
         }
 

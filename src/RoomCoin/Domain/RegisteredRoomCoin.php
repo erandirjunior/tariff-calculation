@@ -10,10 +10,11 @@ class RegisteredRoomCoin extends RoomCoin
         private int $roomId,
         private int $coinId,
         private float $price,
+        private int $hotelId,
         private int $id
     )
     {
-        parent::__construct($this->roomId, $this->coinId, $this->price);
+        parent::__construct($this->roomId, $this->coinId, $this->price, $this->hotelId);
     }
 
     public function getId(): int

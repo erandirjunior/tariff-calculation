@@ -23,7 +23,7 @@ class FindAll extends Action
             $presenter
         );
 
-        $controller->handle($this->args['roomId']);
+        $controller->handle($this->args['roomId'], $this->args['hotelId']);
         return JsonResponse::build(200, $presenter->getData());
     }
 }

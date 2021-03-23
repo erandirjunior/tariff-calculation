@@ -9,12 +9,12 @@ class Destroy
     )
     {}
 
-    public function handle(int $roomId, int $id)
+    public function handle(int $roomId, int $id, int $hotelId)
     {
         $domain = new \SRC\RoomCoin\Domain\Destruction\Destroyer(
             $this->repository
         );
 
-        $domain->destroy($roomId, $id);
+        $domain->destroy($roomId, $id, $hotelId);
     }
 }

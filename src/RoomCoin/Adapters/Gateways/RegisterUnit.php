@@ -4,7 +4,7 @@ namespace SRC\RoomCoin\Adapters\Gateways;
 
 interface RegisterUnit
 {
-    public function register(int $roomId, int $coinId, float $price): int;
+    public function register(int $roomId, int $coinId, float $price, int $hotelId): int;
 
     public function roomPrice(int $roomId, int $coinId): bool;
 

@@ -19,7 +19,7 @@ class Updater
         }
 
         if ($this->updaterGateway->checkIfMoneyAreNotInUse($money, $id)) {
-            throw new \InvalidArgumentException('Money already in use!');
+            throw new \InvalidArgumentException('Money already be in use!');
         }
 
         $this->updaterGateway->update($registeredCoin);

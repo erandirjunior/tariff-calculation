@@ -19,7 +19,7 @@ class Updater
         }
 
         if ($this->updaterGateway->checkIfNameAreNotInUse($name, $id)) {
-            throw new \InvalidArgumentException('Name already in use!');
+            throw new \InvalidArgumentException('The hotel name already in use!');
         }
 
         $this->updaterGateway->update($registeredHotel);

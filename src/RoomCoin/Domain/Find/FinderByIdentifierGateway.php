@@ -6,5 +6,5 @@ use SRC\RoomCoin\Domain\RegisteredRoomCoin;
 
 interface FinderByIdentifierGateway
 {
-    public function find(int $roomId, int $id): RegisteredRoomCoin;
+    public function find(int $roomId, int $id, int $hotelId): RegisteredRoomCoin;
 }

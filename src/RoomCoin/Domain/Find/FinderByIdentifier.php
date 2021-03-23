@@ -10,9 +10,9 @@ class FinderByIdentifier
     )
     {}
 
-    public function find(int $roomId, int $id): void
+    public function find(int $roomId, int $id, int $hotelId): void
     {
-        $user = $this->repository->find($roomId, $id);
+        $user = $this->repository->find($roomId, $id, $hotelId);
 
         $this->presenter->setData($user);
     }

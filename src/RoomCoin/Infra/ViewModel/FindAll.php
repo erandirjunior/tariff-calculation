@@ -14,11 +14,13 @@ class FindAll implements FindAllVM
         return $this->data;
     }
 
-    public function setData(int $roomId, int $coinId, int $id): void
+    public function setData(int $roomId, int $coinId, float $price, int $hotelId, int $id): void
     {
         $this->data[] = [
             'roomId' => $roomId,
             'coinId' => $coinId,
+            'price' => $price,
+            'hotelId' => $hotelId,
             'id' => $id
         ];
     }

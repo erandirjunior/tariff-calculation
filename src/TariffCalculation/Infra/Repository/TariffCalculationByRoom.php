@@ -11,10 +11,10 @@ class TariffCalculationByRoom implements TariffCalculationByRoomUnit
     public function __construct(private \PDO $pdo)
     {}
 
-    public function getRoomPriceByCoin(int $roomId, int $coinId): array
+    public function getRoomPriceByCoin(int $roomId, int $coinId, int $hotelId): array
     {
         $repository = new FindByRoomAndCoin($this->pdo);
-        $data = $repository->find($roomId, $coinId);
+        $data = $repository->find($roomId, $coinId, $hotelId);
         return $data ? $data : [];
     }
 

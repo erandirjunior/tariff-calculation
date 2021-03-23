@@ -14,9 +14,9 @@ class FindByIdentifier
     )
     {}
 
-    public function handle(int $roomId, int $id)
+    public function handle(int $roomId, int $id, int $hotelId)
     {
         $domain = new FinderByIdentifier($this->finderByIdentifierGateway, $this->presenter);
-        $domain->find($roomId, $id);
+        $domain->find($roomId, $id, $hotelId);
     }
 }

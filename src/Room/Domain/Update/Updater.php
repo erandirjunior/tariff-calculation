@@ -16,11 +16,11 @@ class Updater
         $hotel = $registeredRoom->getHotel();
 
         if (!$this->updaterGateway->checkIfRoomExists($hotel, $id)) {
-            throw new \InvalidArgumentException('Hotel not found!');
+            throw new \InvalidArgumentException('Room not found!');
         }
 
         if ($this->updaterGateway->checkIfRoomAreNotInUse($hotel, $room, $id)) {
-            throw new \InvalidArgumentException('Name already in use!');
+            throw new \InvalidArgumentException('The room already be in registered to this hotel!');
         }
 
         $this->updaterGateway->update($registeredRoom);

@@ -8,9 +8,9 @@ interface UpdaterGateway
 {
     public function update(RegisteredRoomCoin $registeredRoomPrice): bool;
 
-    public function checkIfRoomPriceExists(int $roomId, int $id): bool;
+    public function checkIfRoomPriceExists(int $roomId, int $id, int $hotelId): bool;
 
-    public function checkIfRoomPriceAreNotInUse(int $roomId, int $coinId, int $id): bool;
+    public function checkIfRoomPriceAreNotInUse(int $roomId, int $coinId, int $id, int $hotelId): bool;
 
     public function checkIfCoinExists(int $coinId): bool;
 }

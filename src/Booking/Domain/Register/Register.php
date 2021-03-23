@@ -23,7 +23,8 @@ class Register
             $booking->getCoinBase(),
             $booking->getUserCoinNeed(),
             $booking->getRoomId(),
-            $booking->getSellerId()
+            $booking->getSellerId(),
+            $booking->getHotelId()
         );
 
         $contract = new Contract(

@@ -20,7 +20,7 @@ class Register
         $roomType = $room->getRoom();
         $hotel = $room->getHotel();
         if ($this->registerGateway->checkIfRoomIsInUse($roomType, $hotel)) {
-            throw new \DomainException('Room type is in use!');
+            throw new \DomainException('The room already be in registered to this hotel!');
         }
 
         $this->registerData($room);

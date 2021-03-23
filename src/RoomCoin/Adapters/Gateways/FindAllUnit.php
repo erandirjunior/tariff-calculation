@@ -4,5 +4,5 @@ namespace SRC\RoomCoin\Adapters\Gateways;
 
 interface FindAllUnit
 {
-    public function find(int $roomId): array;
+    public function find(int $roomId, int $hotelId): array;
 }

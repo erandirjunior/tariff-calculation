@@ -19,7 +19,8 @@ class TariffCalculationByRoom
         int $coinBase,
         int $userCoinNeed,
         int $roomId,
-        int $sellerId
+        int $sellerId,
+        int $hotelId
     )
     {
         $domain = new \SRC\TariffCalculation\Domain\TariffCalculationByRoom(
@@ -27,7 +28,7 @@ class TariffCalculationByRoom
             $this->getCurrentExchangeValue,
             $this->presenterByRoom
         );
-        $tariff = new Tariff($userCoinNeed, $coinBase, $roomId, $sellerId);
+        $tariff = new Tariff($userCoinNeed, $coinBase, $roomId, $sellerId, $hotelId);
         $domain->calculate($tariff);
     }
 }

@@ -19,7 +19,7 @@ class Destroy extends Action
             $this->destroy
         );
 
-        $controller->handle($this->args['roomId'], $this->args['id']);
+        $controller->handle($this->args['roomId'], $this->args['id'], $this->args['hotelId']);
 
         return JsonResponse::build(204, null);
     }

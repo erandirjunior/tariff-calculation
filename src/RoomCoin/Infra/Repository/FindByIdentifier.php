@@ -9,12 +9,13 @@ class FindByIdentifier implements FindByIdentifierUnit
     public function __construct(private \PDO $pdo)
     {}
 
-    public function find(int $roomId, int $id): array
+    public function find(int $roomId, int $id, int $hotelId): array
     {
-        $sql = 'SELECT id, room_id, coin_id, price FROM room_coin WHERE id = ? AND room_id = ?';
+        $sql = 'SELECT * FROM room_coin WHERE id = ? AND room_id = ? AND hotel_id = ?';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(1, $id);
         $stmt->bindValue(2, $roomId);
+        $stmt->bindValue(3, $hotelId);
         $stmt->execute();
 
         if ($stmt->rowCount() === 1) {

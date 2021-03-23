@@ -8,6 +8,7 @@ interface TariffCalculationGateway
         int $coinBase,
         int $userCoinNeed,
         int $roomId,
-        int $sellerId
+        int $sellerId,
+        int $hotelId
     ): float;
 }

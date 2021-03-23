@@ -27,7 +27,8 @@ class Register extends Action
         $controller->handle(
             $this->args['roomId'],
             $this->body['coinId'],
-            $this->body['price']
+            $this->body['price'],
+            $this->args['hotelId']
         );
 
         return JsonResponse::build(201, $presenter->getData());

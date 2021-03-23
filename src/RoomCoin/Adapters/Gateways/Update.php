@@ -16,18 +16,19 @@ class Update implements UpdaterGateway
             $registeredRoomPrice->getRoomId(),
             $registeredRoomPrice->getCoinId(),
             $registeredRoomPrice->getPrice(),
-            $registeredRoomPrice->getId()
+            $registeredRoomPrice->getId(),
+            $registeredRoomPrice->getHotelId()
         );
     }
 
-    public function checkIfRoomPriceExists(int $roomId, int $id): bool
+    public function checkIfRoomPriceExists(int $roomId, int $id, int $hotelId): bool
     {
-        return $this->updateUnit->checkIfRoomPriceExists($roomId, $id);
+        return $this->updateUnit->checkIfRoomPriceExists($roomId, $id, $hotelId);
     }
 
-    public function checkIfRoomPriceAreNotInUse(int $roomId, int $coinId, int $id): bool
+    public function checkIfRoomPriceAreNotInUse(int $roomId, int $coinId, int $id, int $hotelId): bool
     {
-        return $this->updateUnit->checkIfRoomPriceAreNotInUse($roomId, $coinId, $id);
+        return $this->updateUnit->checkIfRoomPriceAreNotInUse($roomId, $coinId, $id, $hotelId);
     }
 
     public function checkIfCoinExists(int $coinId): bool

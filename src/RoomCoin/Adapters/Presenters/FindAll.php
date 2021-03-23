@@ -16,6 +16,8 @@ class FindAll implements FinderAllPresenter
             $this->findAllVM->setData(
                 $room->getRoomId(),
                 $room->getCoinId(),
+                $room->getPrice(),
+                $room->getHotelId(),
                 $room->getId()
             );
         }

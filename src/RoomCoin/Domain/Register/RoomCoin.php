@@ -7,7 +7,8 @@ class RoomCoin
     public function __construct(
         private int $roomId,
         private int $coinId,
-        private float $price
+        private float $price,
+        private int $hotelId
     )
     {}
 
@@ -24,5 +25,10 @@ class RoomCoin
     public function getPrice(): float
     {
         return $this->price;
+    }
+
+    public function getHotelId(): int
+    {
+        return $this->hotelId;
     }
 }

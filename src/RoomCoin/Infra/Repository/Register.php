@@ -9,13 +9,14 @@ class Register implements RegisterUnit
     public function __construct(private \PDO $pdo)
     {}
 
-    public function register(int $roomId, int $coinId, float $price): int
+    public function register(int $roomId, int $coinId, float $price, int $hotelId): int
     {
-        $sql = 'INSERT INTO room_coin (room_id, coin_id, price) VALUE (?, ?, ?)';
+        $sql = 'INSERT INTO room_coin (room_id, coin_id, price, hotel_id) VALUE (?, ?, ?, ?)';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(1, $roomId);
         $stmt->bindValue(2, $coinId);
         $stmt->bindValue(3, $price);
+        $stmt->bindValue(4, $hotelId);
         $stmt->execute();
         return $this->pdo->lastInsertId();
     }

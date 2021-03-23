@@ -12,10 +12,10 @@ class Update
     )
     {}
 
-    public function handle(int $roomId, int $coinId, float $price, int $id)
+    public function handle(int $roomId, int $coinId, float $price, int $id, int $hotelId)
     {
         $domain = new Updater($this->updaterGateway);
-        $room = new RegisteredRoomCoin($roomId, $coinId, $price, $id);
+        $room = new RegisteredRoomCoin($roomId, $coinId, $price, $hotelId, $id);
         $domain->update($room);
     }
 }

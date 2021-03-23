@@ -14,23 +14,24 @@ class Updater
         $id = $registeredRoomPrice->getId();
         $roomId = $registeredRoomPrice->getRoomId();
         $coinId = $registeredRoomPrice->getCoinId();
+        $hotelId = $registeredRoomPrice->getHotelId();
         $this->updateIfCoinExists($coinId);
-        $this->updateIfRoomExists($roomId, $id);
-        $this->updateIfRoomPriceAreNotInUse($roomId, $coinId, $id);
+        $this->updateIfRoomExists($roomId, $id, $hotelId);
+        $this->updateIfRoomPriceAreNotInUse($roomId, $coinId, $id, $hotelId);
 
         $this->updaterGateway->update($registeredRoomPrice);
     }
 
-    private function updateIfRoomExists($roomId, $id): void
+    private function updateIfRoomExists($roomId, $id, int $hotelId): void
     {
-        if (!$this->updaterGateway->checkIfRoomPriceExists($roomId, $id)) {
+        if (!$this->updaterGateway->checkIfRoomPriceExists($roomId, $id, $hotelId)) {
             throw new \InvalidArgumentException('Room price not found!');
         }
     }
 
-    private function updateIfRoomPriceAreNotInUse($roomId, $coinId, $id): void
+    private function updateIfRoomPriceAreNotInUse(int $roomId, int $coinId, int $id, int $hotelId): void
     {
-        if ($this->updaterGateway->checkIfRoomPriceAreNotInUse($roomId, $coinId, $id)) {
+        if ($this->updaterGateway->checkIfRoomPriceAreNotInUse($roomId, $coinId, $id, $hotelId)) {
             throw new \InvalidArgumentException('Room price coin already in use!');
         }
     }

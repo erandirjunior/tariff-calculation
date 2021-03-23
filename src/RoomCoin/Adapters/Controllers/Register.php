@@ -13,13 +13,13 @@ class Register
     )
     {}
 
-    public function handle(int $roomId, int $coinId, float $price)
+    public function handle(int $roomId, int $coinId, float $price, int $hotelId)
     {
         $domain = new \SRC\RoomCoin\Domain\Register\Register(
             $this->registerGateway,
             $this->presenter
         );
-        $room = new RoomCoin($roomId, $coinId, $price);
+        $room = new RoomCoin($roomId, $coinId, $price, $hotelId);
 
         $domain->register($room);
     }

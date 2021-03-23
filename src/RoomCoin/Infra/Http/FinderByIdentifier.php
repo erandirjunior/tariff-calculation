@@ -24,7 +24,7 @@ class FinderByIdentifier extends Action
             $this->finderByIdentifier
         );
 
-        $controller->handle($this->args['roomId'], $this->args['id']);
+        $controller->handle($this->args['roomId'], $this->args['id'], $this->args['hotelId']);
         return JsonResponse::build(200, $presenter->getData());
     }
 }

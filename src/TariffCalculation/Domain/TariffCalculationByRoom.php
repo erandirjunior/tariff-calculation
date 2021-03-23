@@ -15,9 +15,10 @@ class TariffCalculationByRoom
         $this->formatter = new FormatterValue();
     }
 
-    public function calculate(Tariff $tariff)//, $roomId, $coinIdBase, $coinIdToConvertion, $sellerId): void
+    public function calculate(Tariff $tariff): void
     {
-        $roomPrice = $this->tariffGateway->getRoomPriceByCoin($tariff->getRoomId(), $tariff->getCoinBase());
+        $roomPrice = $this->tariffGateway
+            ->getRoomPriceByCoin($tariff->getRoomId(), $tariff->getCoinBase(), $tariff->getHotelId());
         $profitMargin = $this->tariffGateway->getProfitMargin($tariff->getUserCoinNeed());
         $userNeedCoin = $this->getMoney($tariff->getUserCoinNeed());
         $baseCoin = $this->getMoney($tariff->getCoinBase());

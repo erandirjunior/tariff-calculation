@@ -16,12 +16,14 @@ class Register implements RegisterGateway
         $id = $this->registerUnit->register(
             $roomCoin->getRoomId(),
             $roomCoin->getCoinId(),
-            $roomCoin->getPrice()
+            $roomCoin->getPrice(),
+            $roomCoin->getHotelId()
         );
         return new RegisteredRoomCoin(
             $roomCoin->getRoomId(),
             $roomCoin->getCoinId(),
             $roomCoin->getPrice(),
+            $roomCoin->getHotelId(),
             $id
         );
     }

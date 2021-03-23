@@ -9,8 +9,8 @@ class Destroyer
     )
     {}
 
-    public function destroy(int $roomId, int $id): void
+    public function destroy(int $roomId, int $id, int $hotelId): void
     {
-        $this->destroyerGateway->destroy($roomId, $id);
+        $this->destroyerGateway->destroy($roomId, $id, $hotelId);
     }
 }

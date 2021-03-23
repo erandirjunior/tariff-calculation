@@ -10,9 +10,9 @@ class FinderAll
     )
     {}
 
-    public function find(int $roomId): void
+    public function find(int $roomId, int $hotelId): void
     {
-        $content = $this->finderAllGateway->findAll($roomId);
+        $content = $this->finderAllGateway->findAll($roomId, $hotelId);
         $this->finderAllPresenter->setData($content);
     }
 }
