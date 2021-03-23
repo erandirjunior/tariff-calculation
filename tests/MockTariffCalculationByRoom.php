@@ -6,10 +6,10 @@ use SRC\TariffCalculation\Adapter\Gateways\TariffCalculationByRoomUnit;
 
 class MockTariffCalculationByRoom implements TariffCalculationByRoomUnit
 {
-    public function getRoomPriceByCoin(int $roomId, int $coinId, int $hotelId): array
+    public function getRoomPriceByCurrency(int $roomId, int $currencyId, int $hotelId): array
     {
         $value = 0;
-        switch ($coinId) {
+        switch ($currencyId) {
             case 1:
                 $value = 100;
                 break;
@@ -26,10 +26,10 @@ class MockTariffCalculationByRoom implements TariffCalculationByRoomUnit
         ];
     }
 
-    public function getProfitMarginByCoinRequested(int $coinId): array
+    public function getProfitMarginByCurrencyRequested(int $currencyId): array
     {
         $value = 0;
-        switch ($coinId) {
+        switch ($currencyId) {
             case 2:
                 $value = 10;
                 break;
@@ -42,10 +42,10 @@ class MockTariffCalculationByRoom implements TariffCalculationByRoomUnit
         ];
     }
 
-    public function getMoney(int $coinId): array
+    public function getCurrency(int $currencyId): array
     {
         $value = 0;
-        switch ($coinId) {
+        switch ($currencyId) {
             case 1:
                 $value = 'BRL';
                 break;
@@ -58,7 +58,7 @@ class MockTariffCalculationByRoom implements TariffCalculationByRoomUnit
         }
 
         return [
-            'money' => $value
+            'currency' => $value
         ];
     }
 

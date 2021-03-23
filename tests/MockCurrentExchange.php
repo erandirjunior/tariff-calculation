@@ -8,9 +8,9 @@ use SRC\TariffCalculation\Adapter\Gateways\GetCurrentExchangeUnit;
 
 class MockCurrentExchange implements GetCurrentExchangeUnit
 {
-    public function getValue(string $coin): float
+    public function getValue(string $currency): float
     {
-        switch ($coin) {
+        switch ($currency) {
             case 'USD':
                 return 5.43;
             case 'EUR':
