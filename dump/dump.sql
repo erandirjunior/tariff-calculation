@@ -1,13 +1,13 @@
 USE tariff_calculation;
 
-create table if not exists coin
+create table if not exists currency
 (
     id            int auto_increment
         primary key,
-    money         char(3)       not null,
+    currency         char(3)       not null,
     profit_margin double(10, 2) not null,
-    constraint coin_money_uindex
-        unique (money)
+    constraint currency_currency_uindex
+        unique (currency)
 );
 
 create table if not exists current_exchange
@@ -15,7 +15,7 @@ create table if not exists current_exchange
     id      int auto_increment
         primary key,
     value   double(10, 2) not null,
-    coin    char(3)       not null,
+    currency    char(3)       not null,
     created date          not null
 );
 
@@ -39,23 +39,23 @@ create table if not exists room
             on update cascade on delete cascade
 );
 
-create table if not exists room_coin
+create table room_currency
 (
-    id       int auto_increment
-    primary key,
-    coin_id  int           not null,
-    room_id  int           not null,
-    price    double(10, 2) not null,
-    hotel_id int           not null,
-    constraint room_coin_coin_id_fk
-    foreign key (coin_id) references tariff_calculation.coin (id)
-    on update cascade on delete cascade,
-    constraint room_coin_room_id_fk
-    foreign key (room_id) references tariff_calculation.room (id)
-    on update cascade on delete cascade,
-    constraint room_coin_hotel_id_fk
-    foreign key (hotel_id) references tariff_calculation.hotel (id)
-    on update cascade on delete cascade
+    id          int auto_increment
+        primary key,
+    currency_id int           not null,
+    room_id     int           not null,
+    price       double(10, 2) not null,
+    hotel_id    int           not null,
+    constraint room_currency_currency_id_fk
+        foreign key (currency_id) references currency (id)
+            on update cascade on delete cascade,
+    constraint room_currency_hotel_id_fk
+        foreign key (hotel_id) references hotel (id)
+            on update cascade on delete cascade,
+    constraint room_currency_room_id_fk
+        foreign key (room_id) references room (id)
+            on update cascade on delete cascade
 );
 
 create table if not exists seller
@@ -64,7 +64,7 @@ create table if not exists seller
         primary key,
     name          varchar(255)  not null,
     profit_margin double(10, 2) not null,
-    constraint coin_money_uindex
+    constraint currency_currency_uindex
         unique (name)
 );
 
@@ -88,14 +88,14 @@ create table if not exists booking
     room_id            int           not null,
     price              double(10, 2) not null,
     created            date          not null,
-    coin_base_id       int           not null,
-    coin_conversion_id int           not null,
+    currency_base_id       int           not null,
+    currency_conversion_id int           not null,
     constraint booking___fks
         foreign key (seller_id) references seller (id),
-    constraint booking_coin_id_fk
-        foreign key (coin_base_id) references coin (id),
-    constraint booking_coin_id_fk_2
-        foreign key (coin_conversion_id) references coin (id),
+    constraint booking_currency_id_fk
+        foreign key (currency_base_id) references currency (id),
+    constraint booking_currency_id_fk_2
+        foreign key (currency_conversion_id) references currency (id),
     constraint booking_hotel_id_fk
         foreign key (hotel_id) references hotel (id),
     constraint booking_room_id_fk

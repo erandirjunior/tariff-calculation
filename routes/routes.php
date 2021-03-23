@@ -36,16 +36,16 @@ $app->group('/sellers', function (\Slim\Routing\RouteCollectorProxy $group) {
     $group->put('/{id:[0-9]+}', \SRC\Seller\Infra\Http\Update::class);
 });
 
-$app->group('/coins', function (\Slim\Routing\RouteCollectorProxy $group) {
-    $group->get('/{id:[0-9]+}', \SRC\Coin\Infra\Http\FinderByIdentifier::class);
+$app->group('/currencies', function (\Slim\Routing\RouteCollectorProxy $group) {
+    $group->get('/{id:[0-9]+}', \SRC\Currency\Infra\Http\FinderByIdentifier::class);
 
-    $group->get('', \SRC\Coin\Infra\Http\FindAll::class);
+    $group->get('', \SRC\Currency\Infra\Http\FindAll::class);
 
-    $group->post('', \SRC\Coin\Infra\Http\Register::class);
+    $group->post('', \SRC\Currency\Infra\Http\Register::class);
 
-    $group->delete('/{id:[0-9]+}', \SRC\Coin\Infra\Http\Destroy::class);
+    $group->delete('/{id:[0-9]+}', \SRC\Currency\Infra\Http\Destroy::class);
 
-    $group->put('/{id:[0-9]+}', \SRC\Coin\Infra\Http\Update::class);
+    $group->put('/{id:[0-9]+}', \SRC\Currency\Infra\Http\Update::class);
 });
 
 $app->group('/hotels', function (\Slim\Routing\RouteCollectorProxy $group) {
@@ -73,16 +73,16 @@ $app->group('/hotels', function (\Slim\Routing\RouteCollectorProxy $group) {
         $group->post('/{id:[0-9]+}/prices',
             \SRC\TariffCalculation\Infra\Http\TariffCalculationByRoom::class);
 
-        $group->group('/{roomId:[0-9]+}/coins', function (\Slim\Routing\RouteCollectorProxy $group) {
-            $group->get('/{id:[0-9]+}', \SRC\RoomCoin\Infra\Http\FinderByIdentifier::class);
+        $group->group('/{roomId:[0-9]+}/currencies', function (\Slim\Routing\RouteCollectorProxy $group) {
+            $group->get('/{id:[0-9]+}', \SRC\RoomCurrency\Infra\Http\FinderByIdentifier::class);
 
-            $group->get('', \SRC\RoomCoin\Infra\Http\FindAll::class);
+            $group->get('', \SRC\RoomCurrency\Infra\Http\FindAll::class);
 
-            $group->post('', \SRC\RoomCoin\Infra\Http\Register::class);
+            $group->post('', \SRC\RoomCurrency\Infra\Http\Register::class);
 
-            $group->delete('/{id:[0-9]+}', \SRC\RoomCoin\Infra\Http\Destroy::class);
+            $group->delete('/{id:[0-9]+}', \SRC\RoomCurrency\Infra\Http\Destroy::class);
 
-            $group->put('/{id:[0-9]+}', \SRC\RoomCoin\Infra\Http\Update::class);
+            $group->put('/{id:[0-9]+}', \SRC\RoomCurrency\Infra\Http\Update::class);
         });
     });
 });
