@@ -53,21 +53,21 @@ Detalhe importante é que o banco MySQL utilizará sua porta padrão.
 
 Abaixo estão registrados os endereços para a manipulação da api:
 
-### Coin - Manipule as moedas
+### Currency - Manipule as moedas
 **Register**
 ```
-url: /coins
+url: /currencies
 type: POST
 body:
 {
-    "money": "EUR",
+    "currency": "EUR",
     "profitMargin": 15 // margem de lucro da agência em cima da moeda, valor positivo maior ou igual a 0
 }
 result:
 {
     "status": "success",
     "content": {
-        "money": "EUR",
+        "currency": "EUR",
         "profitMargin": 15,
         "id": 3
     }
@@ -75,24 +75,24 @@ result:
 ```
 **Find All**
 ```
-url: /coins
+url: /currencies
 type: GET
 result:
 {
     "status": "success",
     "data": [
         {
-            "money": "BRL",
+            "currency": "BRL",
             "profitMargin": 0,
             "id": 1
         },
         {
-            "money": "USD",
+            "currency": "USD",
             "profitMargin": 10,
             "id": 2
         },
         {
-            "money": "EUR",
+            "currency": "EUR",
             "profitMargin": 15,
             "id": 3
         }
@@ -101,13 +101,13 @@ result:
 ```
 **Find by Identifier**
 ```
-url: /coins/{id}
+url: /currencies/{id}
 type: GET
 result:
 {
     "status": "success",
     "data": {
-        "money": "BRL",
+        "currency": "BRL",
         "profitMargin": 50,
         "id": 2
     }
@@ -115,17 +115,17 @@ result:
 ```
 **Update by Identifier**
 ```
-url: /coins/{id}
+url: /currencies/{id}
 type: PUT
 body:
 {
-	"money": "BRL",
+	"currency": "BRL",
 	"profitMargin": "50" // margem de lucro da agência em cima da moeda, valor positivo maior ou igual a 0
 }
 ```
 **Delete by Identifier**
 ```
-url: /coins/{id}
+url: /currencies/{id}
 type: DELETE
 ```
 
@@ -190,7 +190,7 @@ body:
 ```
 **Delete by Identifier**
 ```
-url: /coins/{id}
+url: /currencies/{id}
 type: DELETE
 ```
 
@@ -263,14 +263,14 @@ url: /hotel/{hotelId}/rooms/{roomId}
 type: DELETE
 ```
 
-### Room Coin - Manipule os valores e moedas
+### Room Currency - Manipule os valores e moedas
 **Register**
 ```
-url: /hotel/{hotelId}/rooms/{roomId}/coins
+url: /hotel/{hotelId}/rooms/{roomId}/currencies
 type: POST
 body:
 {
-    "coinId": 2, // id da moeda
+    "currencyId": 2, // id da moeda
 	"price": 130 // valor do quarto
 }
 result:
@@ -278,7 +278,7 @@ result:
     "status": "success",
     "data": {
         "roomId": 1,
-        "coinId": 2,
+        "currencyId": 2,
         "price": 130,
         "id": 2
     }
@@ -286,7 +286,7 @@ result:
 ```
 **Find All**
 ```
-url: /hotel/{hotelId}/rooms/{roomId}/coins
+url: /hotel/{hotelId}/rooms/{roomId}/currencies
 type: GET
 result:
 {
@@ -294,13 +294,13 @@ result:
     "data": [
         {
             "roomId": 2,
-            "coinId": 2,
+            "currencyId": 2,
             "price": 120,
             "id": 3
         },
         {
             "roomId": 2,
-            "coinId": 3,
+            "currencyId": 3,
             "price": 115,
             "id": 4
         }
@@ -309,14 +309,14 @@ result:
 ```
 **Find by Identifier**
 ```
-url: /hotel/{hotelId}/rooms/{roomId}/coins
+url: /hotel/{hotelId}/rooms/{roomId}/currencies
 type: GET
 result:
 {
     "status": "success",
     "data": {
         "roomId": 1,
-        "coinId": 2,
+        "currencyId": 2,
         "price": 201,
         "id": 1
     }
@@ -324,17 +324,17 @@ result:
 ```
 **Update by Identifier**
 ```
-url: /hotel/{hotelId}/rooms/{roomId}/coins/{id}
+url: /hotel/{hotelId}/rooms/{roomId}/currencies/{id}
 type: PUT
 body:
 {
-	"coinId": 2, // id da moeda
+	"currencyId": 2, // id da moeda
 	"price": 130 // valor do quarto
 }
 ```
 **Delete by Identifier**
 ```
-url: /hotel/{hotelId}/rooms/{roomId}/coins/{id}
+url: /hotel/{hotelId}/rooms/{roomId}/currencies/{id}
 type: DELETE
 ``` 
 
@@ -414,10 +414,14 @@ url: /sellers/{id}
 type: DELETE
 ```
 
-### TariffCalculation - Calcule o valor de um quarto
-O valor do quarto será calculado utilizando o valor da moeda base,
-somando com a margin de lucro do agência em cima da moeda selecionada pelo usuário,
-somando a margem de lucro do vendedor e aplicado o valor da cotação entre as moedas.
+### TariffCalculation - Cálculo do valor de um quarto
+Valor do quarto na moeda base = Valor do quarto na moeda base + Valor do quarto na moeda base * % do lucro do vendedor.
+Se não houver margem de lucro na moeda escolhida pelo usuário, será retornado o
+Valor do quarto na moeda base * Cotação da moeda
+Se houver margem de lucro na moeda escolhida pelo usuário, então será feito
+Valor do quarto na moeda base = Valor do quarto na moeda base + Valor do quarto na moeda base * Percentual de margem de lucro da moeda
+E será retornado o
+Valor do quarto na moeda base * Cotação da moeda.
 
 **Calculate price**
 ```
@@ -425,8 +429,8 @@ url: /hotels/{hotelId}/rooms/{roomId}/prices
 type: POST
 body:
 {
-	"coinTo": 1, // id da moeda que será mostrada para o usuário
-	"coinFrom": 2, // id da moeda em que foi definido um valor de quarto
+	"currencyTo": 1, // id da moeda que será mostrada para o usuário
+	"currencyFrom": 2, // id da moeda em que foi definido um valor de quarto
 	"sellerId": 2 // id do vendedor para que seja utilizado a margem de lucro dele
 }
 result:
@@ -516,8 +520,8 @@ url: /users/{userId}/bookings
 type: POST
 body:
 {
-    "userCoinNeed": 2, // id da moeda requisitada pelo usuário
-	"coinBase": 3, // id da moeda de venda do quarto
+    "userCurrencyNeed": 2, // id da moeda requisitada pelo usuário
+	"currencyBase": 3, // id da moeda de venda do quarto
 	"sellerId": 2, // id do vendedor
 	"hotelId": 1, // id do hotel
 	"roomId": 1 // id do quarto
@@ -526,8 +530,8 @@ result:
 {
     "status": "success",
     "data": {
-        "userCoinNeed": 2,
-        "coinBase": 2,
+        "userCurrencyNeed": 2,
+        "currencyBase": 2,
         "roomId": 1,
         "userId": 1,
         "sellerId": 2,
@@ -547,8 +551,8 @@ result:
     "status": "success",
     "data": [
         {
-            "coinBase": 2,
-            "userCoinNeed": 2,
+            "currencyBase": 2,
+            "userCurrencyNeed": 2,
             "roomId": 1,
             "userId": 1,
             "sellerId": 2,
@@ -558,8 +562,8 @@ result:
             "price": 150.99
         },
         {
-            "coinBase": 2,
-            "userCoinNeed": 2,
+            "currencyBase": 2,
+            "userCurrencyNeed": 2,
             "roomId": 1,
             "userId": 1,
             "sellerId": 2,
@@ -579,8 +583,8 @@ result:
 {
     "status": "success",
     "data": {
-        "coinBase": 2,
-        "userCoinNeed": 2,
+        "currencyBase": 2,
+        "userCurrencyNeed": 2,
         "roomId": 1,
         "userId": 1,
         "sellerId": 2,
