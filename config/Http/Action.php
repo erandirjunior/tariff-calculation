@@ -24,9 +24,9 @@ abstract class Action
 
             return $this->handle();
         } catch (\DomainException|\InvalidArgumentException $exception) {
-            return (new Json())->response(422, $exception->getMessage());
+            return (new Json())->response(422, $exception->getMessage(), 'fail');
         } catch (\Exception $e) {
-            return (new Json())->response(500, 'Internal error!');
+            return (new Json())->response(500, 'Internal error!', 'error');
         }
     }
 
