@@ -21,8 +21,8 @@ class Register
             $this->tariffCalculationGateway
         );
         $money = new Booking(
-            $data['coinBase'],
-            $data['userCoinNeed'],
+            $data['currencyBase'],
+            $data['userCurrencyNeed'],
             $data['roomId'],
             $userId,
             $data['sellerId'],

@@ -13,7 +13,7 @@ class Register implements RegisterUnit
     public function register(Contract $contract): int
     {
         $sql = 'INSERT INTO booking
-        (user_id, seller_id, hotel_id, room_id, price, created, coin_base_id, coin_conversion_id)
+        (user_id, seller_id, hotel_id, room_id, price, created, currency_base_id, currency_conversion_id)
         VALUE (?, ?, ?, ?, ?, ?, ?, ?)';
 
         $stmt = $this->pdo->prepare($sql);
@@ -23,8 +23,8 @@ class Register implements RegisterUnit
         $stmt->bindValue(4, $contract->getRoomId());
         $stmt->bindValue(5, $contract->getPrice());
         $stmt->bindValue(6, $contract->getDate());
-        $stmt->bindValue(7, $contract->getCoinBase());
-        $stmt->bindValue(8, $contract->getUserCoinNeed());
+        $stmt->bindValue(7, $contract->getCurrencyBase());
+        $stmt->bindValue(8, $contract->getUserCurrencyNeed());
         $stmt->execute();
         return $this->pdo->lastInsertId();
     }

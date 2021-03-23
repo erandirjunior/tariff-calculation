@@ -2,8 +2,8 @@
 
 namespace SRC\TariffCalculation\Infra\Repository;
 
-use SRC\Coin\Infra\Repository\FindByIdentifier;
-use SRC\RoomCoin\Infra\Repository\FindByRoomAndCoin;
+use SRC\Currency\Infra\Repository\FindByIdentifier;
+use SRC\RoomCurrency\Infra\Repository\FindByRoomAndCurrency;
 use SRC\TariffCalculation\Adapter\Gateways\TariffCalculationByRoomUnit;
 
 class TariffCalculationByRoom implements TariffCalculationByRoomUnit
@@ -11,23 +11,23 @@ class TariffCalculationByRoom implements TariffCalculationByRoomUnit
     public function __construct(private \PDO $pdo)
     {}
 
-    public function getRoomPriceByCoin(int $roomId, int $coinId, int $hotelId): array
+    public function getRoomPriceByCurrency(int $roomId, int $currencyId, int $hotelId): array
     {
-        $repository = new FindByRoomAndCoin($this->pdo);
-        $data = $repository->find($roomId, $coinId, $hotelId);
+        $repository = new FindByRoomAndCurrency($this->pdo);
+        $data = $repository->find($roomId, $currencyId, $hotelId);
         return $data ? $data : [];
     }
 
-    public function getProfitMarginByCoinRequested(int $coinId): array
+    public function getProfitMarginByCurrencyRequested(int $currencyId): array
     {
-        $coinRepository = new FindByIdentifier($this->pdo);
-        $data = $coinRepository->find($coinId);
+        $currencyRepository = new FindByIdentifier($this->pdo);
+        $data = $currencyRepository->find($currencyId);
         return $data ? $data : [];
     }
 
-    public function getMoney(int $coinId): array
+    public function getCurrency(int $currencyId): array
     {
-        return $this->getProfitMarginByCoinRequested($coinId);
+        return $this->getProfitMarginByCurrencyRequested($currencyId);
     }
 
     public function getSellerProfitMargin(int $sellerId): array

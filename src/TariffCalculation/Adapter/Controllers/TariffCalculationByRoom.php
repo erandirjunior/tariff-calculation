@@ -16,8 +16,8 @@ class TariffCalculationByRoom
     {}
 
     public function handle(
-        int $coinBase,
-        int $userCoinNeed,
+        int $currencyBase,
+        int $userCurrencyNeed,
         int $roomId,
         int $sellerId,
         int $hotelId
@@ -28,7 +28,7 @@ class TariffCalculationByRoom
             $this->getCurrentExchangeValue,
             $this->presenterByRoom
         );
-        $tariff = new Tariff($userCoinNeed, $coinBase, $roomId, $sellerId, $hotelId);
+        $tariff = new Tariff($userCurrencyNeed, $currencyBase, $roomId, $sellerId, $hotelId);
         $domain->calculate($tariff);
     }
 }

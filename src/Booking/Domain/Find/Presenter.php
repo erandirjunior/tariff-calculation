@@ -6,5 +6,5 @@ use SRC\Booking\Domain\ContractBooking;
 
 interface Presenter
 {
-    public function setData(ContractBooking $coin): void;
+    public function setData(ContractBooking $currency): void;
 }

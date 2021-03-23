@@ -16,7 +16,7 @@ class Update
     public function handle(string $name, int $id)
     {
         $domain = new Updater($this->updaterGateway);
-        $coin = new RegisteredHotel($name, $id);
-        $domain->update($coin);
+        $currency = new RegisteredHotel($name, $id);
+        $domain->update($currency);
     }
 }

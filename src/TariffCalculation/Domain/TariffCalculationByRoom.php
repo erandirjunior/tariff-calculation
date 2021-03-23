@@ -18,12 +18,12 @@ class TariffCalculationByRoom
     public function calculate(Tariff $tariff): void
     {
         $roomPrice = $this->tariffGateway
-            ->getRoomPriceByCoin($tariff->getRoomId(), $tariff->getCoinBase(), $tariff->getHotelId());
-        $profitMargin = $this->tariffGateway->getProfitMargin($tariff->getUserCoinNeed());
-        $userNeedCoin = $this->getMoney($tariff->getUserCoinNeed());
-        $baseCoin = $this->getMoney($tariff->getCoinBase());
-        $currentExchangeBase = $this->getCurrentExchange($baseCoin);
-        $currentExchangeConversion = $this->getCurrentExchange($userNeedCoin);
+            ->getRoomPriceByCurrency($tariff->getRoomId(), $tariff->getCurrencyBase(), $tariff->getHotelId());
+        $profitMargin = $this->tariffGateway->getProfitMargin($tariff->getUserCurrencyNeed());
+        $userNeedCurrency = $this->getMoney($tariff->getUserCurrencyNeed());
+        $baseCurrency = $this->getMoney($tariff->getCurrencyBase());
+        $currentExchangeBase = $this->getCurrentExchange($baseCurrency);
+        $currentExchangeConversion = $this->getCurrentExchange($userNeedCurrency);
         $sellerProfitMargin = $this->tariffGateway->getSellerProfitMargin($tariff->getSellerId());
         $price = $this->getRoomPrice(
             $roomPrice,
@@ -60,9 +60,9 @@ class TariffCalculationByRoom
         return $this->currentExchangeValue->getValue($money);
     }
 
-    private function getMoney(int $coinId): string
+    private function getMoney(int $currencyId): string
     {
-        return $this->tariffGateway->getMoney($coinId);
+        return $this->tariffGateway->getMoney($currencyId);
     }
 
     private function getValueConvertedCurrency(

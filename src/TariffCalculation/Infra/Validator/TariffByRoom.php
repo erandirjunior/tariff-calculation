@@ -11,8 +11,8 @@ class TariffByRoom extends Validator
         return [
             'roomId' => ['required', 'numeric'],
             'hotelId' => ['required', 'numeric'],
-            'toCoin' => ['required', 'numeric'],
-            'fromCoin' => ['required', 'numeric'],
+            'toCurrency' => ['required', 'numeric'],
+            'fromCurrency' => ['required', 'numeric'],
         ];
     }
 

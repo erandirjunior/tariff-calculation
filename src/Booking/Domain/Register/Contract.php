@@ -5,8 +5,8 @@ namespace SRC\Booking\Domain\Register;
 class Contract extends Booking
 {
     public function __construct(
-        private int $coinBase,
-        private int $userCoinNeed,
+        private int $currencyBase,
+        private int $userCurrencyNeed,
         private int $roomId,
         private int $userId,
         private int $sellerId,
@@ -16,8 +16,8 @@ class Contract extends Booking
     )
     {
         parent::__construct(
-            $coinBase,
-            $userCoinNeed,
+            $currencyBase,
+            $userCurrencyNeed,
             $roomId,
             $userId,
             $sellerId,

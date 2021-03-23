@@ -4,11 +4,11 @@ namespace SRC\TariffCalculation\Adapter\Gateways;
 
 interface TariffCalculationByRoomUnit
 {
-    public function getRoomPriceByCoin(int $roomId, int $coinId, int $hotelId): array;
+    public function getRoomPriceByCurrency(int $roomId, int $currencyId, int $hotelId): array;
 
-    public function getProfitMarginByCoinRequested(int $coinId): array;
+    public function getProfitMarginByCurrencyRequested(int $currencyId): array;
 
-    public function getMoney(int $coinId): array;
+    public function getCurrency(int $currencyId): array;
 
     public function getSellerProfitMargin(int $sellerId): array;
 }

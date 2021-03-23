@@ -5,8 +5,8 @@ namespace SRC\Booking\Domain\Register;
 class Booking
 {
     public function __construct(
-        private int $coinBase,
-        private int $userCoinNeed,
+        private int $currencyBase,
+        private int $userCurrencyNeed,
         private int $roomId,
         private int $userId,
         private int $sellerId,
@@ -14,14 +14,14 @@ class Booking
     )
     {}
     
-    public function getCoinBase(): int
+    public function getCurrencyBase(): int
     {
-        return $this->coinBase;
+        return $this->currencyBase;
     }
     
-    public function getUserCoinNeed(): int
+    public function getUserCurrencyNeed(): int
     {
-        return $this->userCoinNeed;
+        return $this->userCurrencyNeed;
     }
     
     public function getRoomId(): int

@@ -5,8 +5,8 @@ namespace SRC\Booking\Domain\Register;
 interface TariffCalculationGateway
 {
     public function calculate(
-        int $coinBase,
-        int $userCoinNeed,
+        int $currencyBase,
+        int $userCurrencyNeed,
         int $roomId,
         int $sellerId,
         int $hotelId

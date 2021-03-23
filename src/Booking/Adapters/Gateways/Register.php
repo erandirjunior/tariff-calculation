@@ -19,8 +19,8 @@ class Register implements RegisterGateway
         );
 
         return new ContractBooking(
-            $contract->getCoinBase(),
-            $contract->getUserCoinNeed(),
+            $contract->getCurrencyBase(),
+            $contract->getUserCurrencyNeed(),
             $contract->getRoomId(),
             $contract->getUserId(),
             $contract->getSellerId(),

@@ -4,5 +4,5 @@ namespace SRC\TariffCalculation\Domain;
 
 interface GetCurrentExchangeValue
 {
-    public function getValue(string $coin): float;
+    public function getValue(string $currency): float;
 }

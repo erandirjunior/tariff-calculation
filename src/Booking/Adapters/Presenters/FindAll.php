@@ -19,8 +19,8 @@ class FindAll implements FinderAllPresenter
 
         foreach ($bookingContainer->getData() as $contract) {
             $this->findAllVM->setData([
-                'coinBase' => $contract->getCoinBase(),
-                'userCoinNeed' => $contract->getUserCoinNeed(),
+                'currencyBase' => $contract->getCurrencyBase(),
+                'userCurrencyNeed' => $contract->getUserCurrencyNeed(),
                 'roomId' => $contract->getRoomId(),
                 'userId' => $contract->getUserId(),
                 'sellerId' => $contract->getSellerId(),

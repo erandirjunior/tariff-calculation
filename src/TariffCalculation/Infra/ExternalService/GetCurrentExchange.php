@@ -6,15 +6,15 @@ use SRC\TariffCalculation\Adapter\Gateways\GetCurrentExchangeUnit;
 
 class GetCurrentExchange implements GetCurrentExchangeUnit
 {
-    public function getValue(string $coin): float
+    public function getValue(string $currency): float
     {
-        $content = file_get_contents("https://economia.awesomeapi.com.br/all/{$coin}");
+        $content = file_get_contents("https://economia.awesomeapi.com.br/all/{$currency}");
         $content = json_decode($content, true);
 
-        if(empty($content[$coin]['bid'])) {
+        if(empty($content[$currency]['bid'])) {
             return 1;
         }
 
-        return $content[$coin]['bid'];
+        return $content[$currency]['bid'];
     }
 }

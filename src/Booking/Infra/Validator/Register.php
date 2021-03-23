@@ -9,8 +9,8 @@ class Register extends Validator
     protected function getRules(): array
     {
         return [
-            'coinBase' => ['required'],
-            'userCoinNeed' => ['required'],
+            'currencyBase' => ['required'],
+            'userCurrencyNeed' => ['required'],
             'hotelId' => ['required'],
             'sellerId' => ['required'],
             'roomId' => ['required']

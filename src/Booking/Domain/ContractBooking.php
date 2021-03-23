@@ -7,8 +7,8 @@ use SRC\Booking\Domain\Register\Contract;
 class ContractBooking extends Contract
 {
     public function __construct(
-        private int $coinBase,
-        private int $userCoinNeed,
+        private int $currencyBase,
+        private int $userCurrencyNeed,
         private int $roomId,
         private int $userId,
         private int $sellerId,
@@ -19,8 +19,8 @@ class ContractBooking extends Contract
     )
     {
         parent::__construct(
-            $this->coinBase,
-            $this->userCoinNeed,
+            $this->currencyBase,
+            $this->userCurrencyNeed,
             $this->roomId,
             $this->userId,
             $this->sellerId,

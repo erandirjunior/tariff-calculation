@@ -4,11 +4,11 @@ namespace SRC\TariffCalculation\Domain;
 
 interface TariffCalculationByRoomGateway
 {
-    public function getRoomPriceByCoin(int $roomId, int $coinId, int $hotelId): float;
+    public function getRoomPriceByCurrency(int $roomId, int $currencyId, int $hotelId): float;
 
-    public function getProfitMargin(int $coinId): float;
+    public function getProfitMargin(int $currencyId): float;
 
     public function getSellerProfitMargin(int $sellerId): float;
 
-    public function getMoney(int $coinId): string;
+    public function getMoney(int $currencyId): string;
 }

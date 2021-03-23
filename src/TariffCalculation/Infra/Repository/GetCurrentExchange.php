@@ -9,13 +9,13 @@ class GetCurrentExchange implements GetCurrentExchangeUnit
     public function __construct(private \PDO $pdo)
     {}
 
-    public function getValue(string $coin): float
+    public function getValue(string $currency): float
     {
         $currentDate = date('Y-m-d');
-        $sql = 'SELECT value FROM current_exchange WHERE created = ? AND coin = ?';
+        $sql = 'SELECT value FROM current_exchange WHERE created = ? AND currency = ?';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(1, $currentDate);
-        $stmt->bindValue(2, $coin);
+        $stmt->bindValue(2, $currency);
         $stmt->execute();
         $data = $stmt->fetch(\PDO::FETCH_ASSOC);
 
@@ -23,18 +23,18 @@ class GetCurrentExchange implements GetCurrentExchangeUnit
             return $data['value'];
         }
 
-        $this->saveCurrentExchange($currentDate, $coin);
-        return $this->getValue($coin);
+        $this->saveCurrentExchange($currentDate, $currency);
+        return $this->getValue($currency);
     }
 
-    private function saveCurrentExchange($currentDate, string $coin)
+    private function saveCurrentExchange($currentDate, string $currency)
     {
         $value = (new \SRC\TariffCalculation\Infra\ExternalService\GetCurrentExchange())
-            ->getValue($coin);
-        $sql = 'INSERT INTO current_exchange (value, coin, created) VALUE (?, ?, ?)';
+            ->getValue($currency);
+        $sql = 'INSERT INTO current_exchange (value, currency, created) VALUE (?, ?, ?)';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(1, $value);
-        $stmt->bindValue(2, $coin);
+        $stmt->bindValue(2, $currency);
         $stmt->bindValue(3, $currentDate);
         $stmt->execute();
     }

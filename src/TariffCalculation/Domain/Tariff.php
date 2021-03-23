@@ -5,22 +5,22 @@ namespace SRC\TariffCalculation\Domain;
 class Tariff
 {
     public function __construct(
-        private int $userCoinNeed,
-        private int $coinBase,
+        private int $userCurrencyNeed,
+        private int $currencyBase,
         private int $roomId,
         private int $sellerId,
         private int $hotelId
     )
     {}
 
-    public function getUserCoinNeed(): int
+    public function getUserCurrencyNeed(): int
     {
-        return $this->userCoinNeed;
+        return $this->userCurrencyNeed;
     }
 
-    public function getCoinBase(): int
+    public function getCurrencyBase(): int
     {
-        return $this->coinBase;
+        return $this->currencyBase;
     }
 
     public function getRoomId(): int

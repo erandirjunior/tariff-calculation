@@ -11,9 +11,9 @@ class TariffCalculationByRoom implements TariffCalculationByRoomGateway
     )
     {}
 
-    public function getRoomPriceByCoin(int $roomId, int $coinId, int $hotelId): float
+    public function getRoomPriceByCurrency(int $roomId, int $currencyId, int $hotelId): float
     {
-        $content = $this->tariffCalculationByRoomUnit->getRoomPriceByCoin($roomId, $coinId, $hotelId);
+        $content = $this->tariffCalculationByRoomUnit->getRoomPriceByCurrency($roomId, $currencyId, $hotelId);
 
         if (!$content) {
             throw new \InvalidArgumentException('Room price not found!');
@@ -22,26 +22,26 @@ class TariffCalculationByRoom implements TariffCalculationByRoomGateway
         return $content['price'];
     }
 
-    public function getProfitMargin(int $coinId): float
+    public function getProfitMargin(int $currencyId): float
     {
-        $content = $this->tariffCalculationByRoomUnit->getProfitMarginByCoinRequested($coinId);
+        $content = $this->tariffCalculationByRoomUnit->getProfitMarginByCurrencyRequested($currencyId);
 
         if (!$content) {
-            throw new \InvalidArgumentException('Profit Margin not found to coin requested!');
+            throw new \InvalidArgumentException('Profit Margin not found to currency requested!');
         }
 
         return $content['profit_margin'];
     }
 
-    public function getMoney(int $coinId): string
+    public function getMoney(int $currencyId): string
     {
-        $content = $this->tariffCalculationByRoomUnit->getMoney($coinId);
+        $content = $this->tariffCalculationByRoomUnit->getCurrency($currencyId);
 
         if (!$content) {
-            throw new \DomainException('Money not found to coin requested!');
+            throw new \DomainException('Currency not found to currency requested!');
         }
 
-        return $content['money'];
+        return $content['currency'];
     }
 
     public function getSellerProfitMargin(int $sellerId): float

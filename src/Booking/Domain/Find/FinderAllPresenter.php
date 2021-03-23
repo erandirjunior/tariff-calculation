@@ -4,5 +4,5 @@ namespace SRC\Booking\Domain\Find;
 
 interface FinderAllPresenter
 {
-    public function setData(BookingContainer $coinContainer): void;
+    public function setData(BookingContainer $currencyContainer): void;
 }

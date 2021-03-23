@@ -13,8 +13,8 @@ class FindByIdentifier implements Presenter
     public function setData(ContractBooking $contractBooking): void
     {
         $this->findByCodeVM->setData([
-            'coinBase' => $contractBooking->getCoinBase(),
-            'userCoinNeed' => $contractBooking->getUserCoinNeed(),
+            'currencyBase' => $contractBooking->getCurrencyBase(),
+            'userCurrencyNeed' => $contractBooking->getUserCurrencyNeed(),
             'roomId' => $contractBooking->getRoomId(),
             'userId' => $contractBooking->getUserId(),
             'sellerId' => $contractBooking->getSellerId(),

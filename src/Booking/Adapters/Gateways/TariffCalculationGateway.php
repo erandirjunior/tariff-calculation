@@ -9,11 +9,11 @@ class TariffCalculationGateway implements \SRC\Booking\Domain\Register\TariffCal
     )
     {}
 
-    public function calculate(int $coinBase, int $userCoinNeed, int $roomId, int $sellerId, int $hotelId): float
+    public function calculate(int $currencyBase, int $userCurrencyNeed, int $roomId, int $sellerId, int $hotelId): float
     {
         return $this->tariffCalculationGatewayUnit->calculate(
-            $coinBase,
-            $userCoinNeed,
+            $currencyBase,
+            $userCurrencyNeed,
             $roomId,
             $sellerId,
             $hotelId

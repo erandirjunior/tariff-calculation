@@ -20,16 +20,16 @@ class Register
         }
 
         $price = $this->tariffCalculationGateway->calculate(
-            $booking->getCoinBase(),
-            $booking->getUserCoinNeed(),
+            $booking->getCurrencyBase(),
+            $booking->getUserCurrencyNeed(),
             $booking->getRoomId(),
             $booking->getSellerId(),
             $booking->getHotelId()
         );
 
         $contract = new Contract(
-            $booking->getCoinBase(),
-            $booking->getUserCoinNeed(),
+            $booking->getCurrencyBase(),
+            $booking->getUserCurrencyNeed(),
             $booking->getRoomId(),
             $booking->getUserId(),
             $booking->getSellerId(),

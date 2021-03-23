@@ -13,8 +13,8 @@ class Register implements Presenter
     public function addData(ContractBooking $contractBooking): void
     {
         $content = [
-            'userCoinNeed' => $contractBooking->getUserCoinNeed(),
-            'coinBase' => $contractBooking->getCoinBase(),
+            'userCurrencyNeed' => $contractBooking->getUserCurrencyNeed(),
+            'currencyBase' => $contractBooking->getCurrencyBase(),
             'roomId' => $contractBooking->getRoomId(),
             'userId' => $contractBooking->getUserId(),
             'sellerId' => $contractBooking->getSellerId(),

@@ -9,9 +9,9 @@ class BookingContainer
     public function __construct(private array $data = [])
     {}
 
-    public function add(ContractBooking $registeredCoin)
+    public function add(ContractBooking $registeredCurrency)
     {
-        $this->data[] = $registeredCoin;
+        $this->data[] = $registeredCurrency;
     }
 
     public function getData(): array

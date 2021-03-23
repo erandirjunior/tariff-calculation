@@ -15,7 +15,7 @@ class TariffCalculationFactory implements TariffCalculationGatewayUnit
     )
     {}
 
-    public function calculate(int $coinBase, int $userCoinNeed, int $roomId, int $sellerId, int $hotelId): float
+    public function calculate(int $currencyBase, int $userCurrencyNeed, int $roomId, int $sellerId, int $hotelId): float
     {
         $controller = new \SRC\TariffCalculation\Adapter\Controllers\TariffCalculationByRoom(
             $this->presenterByRoom,
@@ -23,7 +23,7 @@ class TariffCalculationFactory implements TariffCalculationGatewayUnit
             $this->tariffCalculationByRoom
         );
 
-        $controller->handle($coinBase, $userCoinNeed, $roomId, $sellerId, $hotelId);
+        $controller->handle($currencyBase, $userCurrencyNeed, $roomId, $sellerId, $hotelId);
         return $this->presenterByRoom->getData()['price'];
     }
 }

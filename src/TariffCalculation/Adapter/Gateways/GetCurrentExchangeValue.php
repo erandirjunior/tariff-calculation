@@ -9,8 +9,8 @@ class GetCurrentExchangeValue implements \SRC\TariffCalculation\Domain\GetCurren
     )
     {}
 
-    public function getValue(string $coin): float
+    public function getValue(string $currency): float
     {
-        return $this->getCurrentExchangeUnit->getValue($coin);
+        return $this->getCurrentExchangeUnit->getValue($currency);
     }
 }

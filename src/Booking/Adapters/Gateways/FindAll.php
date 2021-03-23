@@ -17,8 +17,8 @@ class FindAll implements FinderAllGateway
         $container = new BookingContainer();
         foreach ($content as $data) {
             $contract = new ContractBooking(
-                $data['coin_base_id'],
-                $data['coin_conversion_id'],
+                $data['currency_base_id'],
+                $data['currency_conversion_id'],
                 $data['room_id'],
                 $data['user_id'],
                 $data['seller_id'],
