@@ -1,8 +1,8 @@
 <?php
 
-namespace SRC\RoomCoin\Infra\ViewModel;
+namespace SRC\RoomCurrency\Infra\ViewModel;
 
-use SRC\RoomCoin\Adapters\Presenters\FindByIdentifierVM;
+use SRC\RoomCurrency\Adapters\Presenters\FindByIdentifierVM;
 
 class FindByIdentifier implements FindByIdentifierVM
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace SRC\RoomCoin\Domain\Find;
+namespace SRC\RoomCurrency\Domain\Find;
 
-use SRC\RoomCoin\Domain\RegisteredRoomCoin;
+use SRC\RoomCurrency\Domain\RegisteredRoomCurrency;
 
 class RoomPriceContainer
 {
     public function __construct(private array $data = [])
     {}
 
-    public function add(RegisteredRoomCoin $registeredRoomPrice)
+    public function add(RegisteredRoomCurrency $registeredRoomPrice)
     {
         $this->data[] = $registeredRoomPrice;
     }

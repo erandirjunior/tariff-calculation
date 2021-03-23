@@ -1,40 +1,40 @@
 <?php
 
-namespace SRC\RoomCoin\Adapters\Gateways;
+namespace SRC\RoomCurrency\Adapters\Gateways;
 
-use SRC\RoomCoin\Domain\Register\RegisterGateway;
-use SRC\RoomCoin\Domain\Register\RoomCoin;
-use SRC\RoomCoin\Domain\RegisteredRoomCoin;
+use SRC\RoomCurrency\Domain\Register\RegisterGateway;
+use SRC\RoomCurrency\Domain\Register\RoomCurrency;
+use SRC\RoomCurrency\Domain\RegisteredRoomCurrency;
 
 class Register implements RegisterGateway
 {
     public function __construct(private RegisterUnit $registerUnit)
     {}
 
-    public function register(RoomCoin $roomCoin): RegisteredRoomCoin
+    public function register(RoomCurrency $roomCurrency): RegisteredRoomCurrency
     {
         $id = $this->registerUnit->register(
-            $roomCoin->getRoomId(),
-            $roomCoin->getCoinId(),
-            $roomCoin->getPrice(),
-            $roomCoin->getHotelId()
+            $roomCurrency->getRoomId(),
+            $roomCurrency->getCurrencyId(),
+            $roomCurrency->getPrice(),
+            $roomCurrency->getHotelId()
         );
-        return new RegisteredRoomCoin(
-            $roomCoin->getRoomId(),
-            $roomCoin->getCoinId(),
-            $roomCoin->getPrice(),
-            $roomCoin->getHotelId(),
+        return new RegisteredRoomCurrency(
+            $roomCurrency->getRoomId(),
+            $roomCurrency->getCurrencyId(),
+            $roomCurrency->getPrice(),
+            $roomCurrency->getHotelId(),
             $id
         );
     }
 
-    public function registerIfRoomCoinIsUnique(int $roomId, int $currencyId): bool
+    public function registerIfRoomCurrencyIsUnique(int $roomId, int $currencyId): bool
     {
         return $this->registerUnit->roomPrice($roomId, $currencyId);
     }
 
-    public function checkIfCoinExists(int $currencyId): bool
+    public function checkIfCurrencyExists(int $currencyId): bool
     {
-        return $this->registerUnit->checkIfCoinExists($currencyId);
+        return $this->registerUnit->checkIfCurrencyExists($currencyId);
     }
 }

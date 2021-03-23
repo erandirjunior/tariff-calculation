@@ -1,8 +1,8 @@
 <?php
 
-namespace SRC\RoomCoin\Infra\Repository;
+namespace SRC\RoomCurrency\Infra\Repository;
 
-use SRC\RoomCoin\Adapters\Gateways\UpdateUnit;
+use SRC\RoomCurrency\Adapters\Gateways\UpdateUnit;
 
 class Update implements UpdateUnit
 {
@@ -11,7 +11,7 @@ class Update implements UpdateUnit
 
     public function update(int $roomId, int $currencyId, float $price, int $id, int $hotelId): bool
     {
-        $sql = 'UPDATE room_coin SET price = ?, coin_id = ? WHERE id = ? AND room_id = ? AND hotel_id = ?';
+        $sql = 'UPDATE room_currency SET price = ?, currency_id = ? WHERE id = ? AND room_id = ? AND hotel_id = ?';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(1, $price);
         $stmt->bindValue(2, $currencyId);
@@ -31,7 +31,7 @@ class Update implements UpdateUnit
 
     public function checkIfRoomPriceAreNotInUse(int $roomId, int $currencyId, int $id, int $hotelId): bool
     {
-        $sql = 'SELECT id FROM room_coin WHERE room_id = ? AND id <> ? AND coin_id = ? AND hotel_id = ?';
+        $sql = 'SELECT id FROM room_currency WHERE room_id = ? AND id <> ? AND currency_id = ? AND hotel_id = ?';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(1, $roomId);
         $stmt->bindValue(2, $id);
@@ -41,9 +41,9 @@ class Update implements UpdateUnit
         return $stmt->rowCount() > 0;
     }
 
-    public function checkIfCoinExists(int $currencyId): bool
+    public function checkIfCurrencyExists(int $currencyId): bool
     {
-        $room = (new \SRC\Coin\Infra\Repository\FindByIdentifier($this->pdo))
+        $room = (new \SRC\Currency\Infra\Repository\FindByIdentifier($this->pdo))
             ->find($currencyId);
         return !!$room;
     }

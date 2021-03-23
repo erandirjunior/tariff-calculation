@@ -1,20 +1,20 @@
 <?php
 
-namespace SRC\RoomCoin\Adapters\Presenters;
+namespace SRC\RoomCurrency\Adapters\Presenters;
 
-use SRC\RoomCoin\Domain\Find\Presenter;
-use SRC\RoomCoin\Domain\RegisteredRoomCoin;
+use SRC\RoomCurrency\Domain\Find\Presenter;
+use SRC\RoomCurrency\Domain\RegisteredRoomCurrency;
 
 class FindByIdentifier implements Presenter
 {
     public function __construct(private FindByIdentifierVM $findByCodeVM)
     {}
 
-    public function setData(RegisteredRoomCoin $registeredRoomPrice): void
+    public function setData(RegisteredRoomCurrency $registeredRoomPrice): void
     {
         $this->findByCodeVM->setData(
             $registeredRoomPrice->getRoomId(),
-            $registeredRoomPrice->getCoinId(),
+            $registeredRoomPrice->getCurrencyId(),
             $registeredRoomPrice->getPrice(),
             $registeredRoomPrice->getHotelId(),
             $registeredRoomPrice->getId()

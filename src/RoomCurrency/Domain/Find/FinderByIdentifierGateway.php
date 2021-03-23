@@ -1,10 +1,10 @@
 <?php
 
-namespace SRC\RoomCoin\Domain\Find;
+namespace SRC\RoomCurrency\Domain\Find;
 
-use SRC\RoomCoin\Domain\RegisteredRoomCoin;
+use SRC\RoomCurrency\Domain\RegisteredRoomCurrency;
 
 interface FinderByIdentifierGateway
 {
-    public function find(int $roomId, int $id, int $hotelId): RegisteredRoomCoin;
+    public function find(int $roomId, int $id, int $hotelId): RegisteredRoomCurrency;
 }

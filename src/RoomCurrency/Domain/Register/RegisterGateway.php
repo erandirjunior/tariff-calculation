@@ -1,14 +1,14 @@
 <?php
 
-namespace SRC\RoomCoin\Domain\Register;
+namespace SRC\RoomCurrency\Domain\Register;
 
-use SRC\RoomCoin\Domain\RegisteredRoomCoin;
+use SRC\RoomCurrency\Domain\RegisteredRoomCurrency;
 
 interface RegisterGateway
 {
-    public function register(RoomCoin $roomCoin): RegisteredRoomCoin;
+    public function register(RoomCurrency $roomCurrency): RegisteredRoomCurrency;
 
-    public function registerIfRoomCoinIsUnique(int $roomId, int $currencyId): bool;
+    public function registerIfRoomCurrencyIsUnique(int $roomId, int $currencyId): bool;
 
-    public function checkIfCoinExists(int $currencyId): bool;
+    public function checkIfCurrencyExists(int $currencyId): bool;
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace SRC\RoomCoin\Adapters\Gateways;
+namespace SRC\RoomCurrency\Adapters\Gateways;
 
-use SRC\RoomCoin\Domain\Find\FinderAllGateway;
-use SRC\RoomCoin\Domain\Find\RoomPriceContainer;
-use SRC\RoomCoin\Domain\RegisteredRoomCoin;
+use SRC\RoomCurrency\Domain\Find\FinderAllGateway;
+use SRC\RoomCurrency\Domain\Find\RoomPriceContainer;
+use SRC\RoomCurrency\Domain\RegisteredRoomCurrency;
 
 class FindAll implements FinderAllGateway
 {
@@ -16,7 +16,7 @@ class FindAll implements FinderAllGateway
         $content = $this->findAllUnit->find($roomId, $hotelId);
         $container = new RoomPriceContainer();
         foreach ($content as $data) {
-            $hotel = new RegisteredRoomCoin(
+            $hotel = new RegisteredRoomCurrency(
                 $data['room_id'],
                 $data['currency_id'],
                 $data['price'],

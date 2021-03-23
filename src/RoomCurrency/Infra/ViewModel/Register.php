@@ -1,8 +1,8 @@
 <?php
 
-namespace SRC\RoomCoin\Infra\ViewModel;
+namespace SRC\RoomCurrency\Infra\ViewModel;
 
-use SRC\RoomCoin\Adapters\Presenters\RegisterVM;
+use SRC\RoomCurrency\Adapters\Presenters\RegisterVM;
 
 class Register implements RegisterVM
 {

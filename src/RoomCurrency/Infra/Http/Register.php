@@ -1,26 +1,26 @@
 <?php
 
-namespace SRC\RoomCoin\Infra\Http;
+namespace SRC\RoomCurrency\Infra\Http;
 
 use Config\Http\Action;
 use Config\Response\JsonResponse;
 use Psr\Http\Message\ResponseInterface;
-use SRC\RoomCoin\Adapters\Presenters\RegisterVM;
+use SRC\RoomCurrency\Adapters\Presenters\RegisterVM;
 
 class Register extends Action
 {
     public function __construct(
         private RegisterVM $registerVM,
-        private \SRC\RoomCoin\Adapters\Gateways\Register $repository,
-        private \SRC\RoomCoin\Infra\Validator\Register $registerValidator
+        private \SRC\RoomCurrency\Adapters\Gateways\Register $repository,
+        private \SRC\RoomCurrency\Infra\Validator\Register $registerValidator
     )
     {}
 
     public function handle(): ResponseInterface
     {
         $this->registerValidator->validate($this->body);
-        $presenter = new \SRC\RoomCoin\Adapters\Presenters\Register($this->registerVM);
-        $controller = new \SRC\RoomCoin\Adapters\Controllers\Register(
+        $presenter = new \SRC\RoomCurrency\Adapters\Presenters\Register($this->registerVM);
+        $controller = new \SRC\RoomCurrency\Adapters\Controllers\Register(
             $presenter,
             $this->repository
         );

@@ -1,10 +1,10 @@
 <?php
 
-namespace SRC\RoomCoin\Domain\Find;
+namespace SRC\RoomCurrency\Domain\Find;
 
-use SRC\RoomCoin\Domain\RegisteredRoomCoin;
+use SRC\RoomCurrency\Domain\RegisteredRoomCurrency;
 
 interface Presenter
 {
-    public function setData(RegisteredRoomCoin $registeredRoomPrice): void;
+    public function setData(RegisteredRoomCurrency $registeredRoomPrice): void;
 }

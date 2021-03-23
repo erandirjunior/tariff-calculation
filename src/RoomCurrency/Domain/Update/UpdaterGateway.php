@@ -1,16 +1,16 @@
 <?php
 
-namespace SRC\RoomCoin\Domain\Update;
+namespace SRC\RoomCurrency\Domain\Update;
 
-use SRC\RoomCoin\Domain\RegisteredRoomCoin;
+use SRC\RoomCurrency\Domain\RegisteredRoomCurrency;
 
 interface UpdaterGateway
 {
-    public function update(RegisteredRoomCoin $registeredRoomPrice): bool;
+    public function update(RegisteredRoomCurrency $registeredRoomPrice): bool;
 
     public function checkIfRoomPriceExists(int $roomId, int $id, int $hotelId): bool;
 
     public function checkIfRoomPriceAreNotInUse(int $roomId, int $currencyId, int $id, int $hotelId): bool;
 
-    public function checkIfCoinExists(int $currencyId): bool;
+    public function checkIfCurrencyExists(int $currencyId): bool;
 }

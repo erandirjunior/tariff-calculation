@@ -1,14 +1,14 @@
 <?php
 
-namespace SRC\RoomCoin\Adapters\Controllers;
+namespace SRC\RoomCurrency\Adapters\Controllers;
 
-use SRC\RoomCoin\Domain\Find\FinderAll;
+use SRC\RoomCurrency\Domain\Find\FinderAll;
 
 class FindAll
 {
     public function __construct(
-        private \SRC\RoomCoin\Adapters\Gateways\FindAll $repository,
-        private \SRC\RoomCoin\Adapters\Presenters\FindAll $presenter
+        private \SRC\RoomCurrency\Adapters\Gateways\FindAll $repository,
+        private \SRC\RoomCurrency\Adapters\Presenters\FindAll $presenter
     )
     {}
 

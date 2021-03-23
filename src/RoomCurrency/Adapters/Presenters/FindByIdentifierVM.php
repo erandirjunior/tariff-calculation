@@ -1,6 +1,6 @@
 <?php
 
-namespace SRC\RoomCoin\Adapters\Presenters;
+namespace SRC\RoomCurrency\Adapters\Presenters;
 
 interface FindByIdentifierVM
 {

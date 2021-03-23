@@ -1,8 +1,8 @@
 <?php
 
-namespace SRC\RoomCoin\Infra\Repository;
+namespace SRC\RoomCurrency\Infra\Repository;
 
-use SRC\RoomCoin\Adapters\Gateways\DestroyUnit;
+use SRC\RoomCurrency\Adapters\Gateways\DestroyUnit;
 
 class Destroy implements DestroyUnit
 {
@@ -11,7 +11,7 @@ class Destroy implements DestroyUnit
 
     public function destroy(int $roomId, int $id, int $hotelId): bool
     {
-        $stmt = $this->pdo->prepare('DELETE FROM room_coin WHERE id = ? AND room_id = ? AND hotel_id = ?');
+        $stmt = $this->pdo->prepare('DELETE FROM room_currency WHERE id = ? AND room_id = ? AND hotel_id = ?');
         $stmt->bindValue(1, $id);
         $stmt->bindValue(2, $roomId);
         $stmt->bindValue(3, $hotelId);

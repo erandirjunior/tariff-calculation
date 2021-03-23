@@ -1,23 +1,23 @@
 <?php
 
-namespace SRC\RoomCoin\Domain\Update;
+namespace SRC\RoomCurrency\Domain\Update;
 
-use SRC\RoomCoin\Domain\RegisteredRoomCoin;
+use SRC\RoomCurrency\Domain\RegisteredRoomCurrency;
 
 class Updater
 {
     public function __construct(private UpdaterGateway $updaterGateway)
     {}
 
-    public function update(RegisteredRoomCoin $registeredRoomPrice): void
+    public function update(RegisteredRoomCurrency $registeredRoomPrice): void
     {
         $id = $registeredRoomPrice->getId();
         $roomId = $registeredRoomPrice->getRoomId();
-        $coinId = $registeredRoomPrice->getCoinId();
+        $currencyId = $registeredRoomPrice->getCurrencyId();
         $hotelId = $registeredRoomPrice->getHotelId();
-        $this->updateIfCoinExists($coinId);
+        $this->updateIfCurrencyExists($currencyId);
         $this->updateIfRoomExists($roomId, $id, $hotelId);
-        $this->updateIfRoomPriceAreNotInUse($roomId, $coinId, $id, $hotelId);
+        $this->updateIfRoomPriceAreNotInUse($roomId, $currencyId, $id, $hotelId);
 
         $this->updaterGateway->update($registeredRoomPrice);
     }
@@ -29,16 +29,16 @@ class Updater
         }
     }
 
-    private function updateIfRoomPriceAreNotInUse(int $roomId, int $coinId, int $id, int $hotelId): void
+    private function updateIfRoomPriceAreNotInUse(int $roomId, int $currencyId, int $id, int $hotelId): void
     {
-        if ($this->updaterGateway->checkIfRoomPriceAreNotInUse($roomId, $coinId, $id, $hotelId)) {
-            throw new \InvalidArgumentException('Room price coin already in use!');
+        if ($this->updaterGateway->checkIfRoomPriceAreNotInUse($roomId, $currencyId, $id, $hotelId)) {
+            throw new \InvalidArgumentException('Room price currency already in use!');
         }
     }
 
-    private function updateIfCoinExists($coinId): void
+    private function updateIfCurrencyExists($currencyId): void
     {
-        if (!$this->updaterGateway->checkIfCoinExists($coinId)) {
+        if (!$this->updaterGateway->checkIfCurrencyExists($currencyId)) {
             throw new \InvalidArgumentException('Currency is not valid!');
         }
     }

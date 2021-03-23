@@ -1,24 +1,24 @@
 <?php
 
-namespace SRC\RoomCoin\Infra\Http;
+namespace SRC\RoomCurrency\Infra\Http;
 
 use Config\Http\Action;
 use Config\Response\JsonResponse;
 use Psr\Http\Message\ResponseInterface;
-use SRC\RoomCoin\Adapters\Controllers\FindByIdentifier;
-use SRC\RoomCoin\Adapters\Presenters\FindByIdentifierVM;
+use SRC\RoomCurrency\Adapters\Controllers\FindByIdentifier;
+use SRC\RoomCurrency\Adapters\Presenters\FindByIdentifierVM;
 
 class FinderByIdentifier extends Action
 {
     public function __construct(
         private FindByIdentifierVM $byIdentifierVM,
-        private \SRC\RoomCoin\Adapters\Gateways\FinderByIdentifier $finderByIdentifier
+        private \SRC\RoomCurrency\Adapters\Gateways\FinderByIdentifier $finderByIdentifier
     )
     {}
 
     public function handle(): ResponseInterface
     {
-        $presenter = new \SRC\RoomCoin\Adapters\Presenters\FindByIdentifier($this->byIdentifierVM);
+        $presenter = new \SRC\RoomCurrency\Adapters\Presenters\FindByIdentifier($this->byIdentifierVM);
         $controller = new FindByIdentifier(
             $presenter,
             $this->finderByIdentifier

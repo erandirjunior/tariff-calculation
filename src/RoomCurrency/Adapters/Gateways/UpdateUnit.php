@@ -1,6 +1,6 @@
 <?php
 
-namespace SRC\RoomCoin\Adapters\Gateways;
+namespace SRC\RoomCurrency\Adapters\Gateways;
 
 interface UpdateUnit
 {
@@ -10,5 +10,5 @@ interface UpdateUnit
 
     public function checkIfRoomPriceAreNotInUse(int $roomId, int $currencyId, int $id, int $hotelId): bool;
 
-    public function checkIfCoinExists(int $currencyId): bool;
+    public function checkIfCurrencyExists(int $currencyId): bool;
 }

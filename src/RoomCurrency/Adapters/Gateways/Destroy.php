@@ -1,8 +1,8 @@
 <?php
 
-namespace SRC\RoomCoin\Adapters\Gateways;
+namespace SRC\RoomCurrency\Adapters\Gateways;
 
-use SRC\RoomCoin\Domain\Destruction\DestroyerGateway;
+use SRC\RoomCurrency\Domain\Destruction\DestroyerGateway;
 
 class Destroy implements DestroyerGateway
 {

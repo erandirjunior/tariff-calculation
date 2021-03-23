@@ -1,10 +1,10 @@
 <?php
 
-namespace SRC\RoomCoin\Domain;
+namespace SRC\RoomCurrency\Domain;
 
-use SRC\RoomCoin\Domain\Register\RoomCoin;
+use SRC\RoomCurrency\Domain\Register\RoomCurrency;
 
-class RegisteredRoomCurrency extends RoomCoin
+class RegisteredRoomCurrency extends RoomCurrency
 {
     public function __construct(
         private int $roomId,
@@ -14,7 +14,7 @@ class RegisteredRoomCurrency extends RoomCoin
         private int $id
     )
     {
-        parent::__construct($this->roomId, $this->coinId, $this->price, $this->hotelId);
+        parent::__construct($this->roomId, $this->currencyId, $this->price, $this->hotelId);
     }
 
     public function getId(): int

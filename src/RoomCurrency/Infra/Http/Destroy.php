@@ -1,6 +1,6 @@
 <?php
 
-namespace SRC\RoomCoin\Infra\Http;
+namespace SRC\RoomCurrency\Infra\Http;
 
 use Config\Http\Action;
 use Config\Response\JsonResponse;
@@ -9,13 +9,13 @@ use Psr\Http\Message\ResponseInterface;
 class Destroy extends Action
 {
     public function __construct(
-        private \SRC\RoomCoin\Adapters\Gateways\Destroy $destroy
+        private \SRC\RoomCurrency\Adapters\Gateways\Destroy $destroy
     )
     {}
 
     public function handle(): ResponseInterface
     {
-        $controller = new \SRC\RoomCoin\Adapters\Controllers\Destroy(
+        $controller = new \SRC\RoomCurrency\Adapters\Controllers\Destroy(
             $this->destroy
         );
 

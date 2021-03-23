@@ -2,7 +2,7 @@
 
 namespace SRC\RoomCurrency\Infra\Repository;
 
-class FindByRoomAndCoin
+class FindByRoomAndCurrency
 {
     public function __construct(private \PDO $pdo)
     {}

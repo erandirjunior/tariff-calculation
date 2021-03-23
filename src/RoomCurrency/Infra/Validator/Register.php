@@ -1,6 +1,6 @@
 <?php
 
-namespace SRC\RoomCoin\Infra\Validator;
+namespace SRC\RoomCurrency\Infra\Validator;
 
 use Config\DataValidator\Validator;
 
@@ -9,7 +9,8 @@ class Register extends Validator
     protected function getRules(): array
     {
         return [
-            'price' => ['required', 'numeric']
+            'price' => ['required', 'numeric'],
+            'currencyId' => ['required', 'numeric']
         ];
     }
 

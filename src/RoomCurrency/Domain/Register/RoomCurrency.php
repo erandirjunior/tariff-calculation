@@ -17,9 +17,9 @@ class RoomCurrency
         return $this->roomId;
     }
 
-    public function getCoinId(): int
+    public function getCurrencyId(): int
     {
-        return $this->coinId;
+        return $this->currencyId;
     }
 
     public function getPrice(): float

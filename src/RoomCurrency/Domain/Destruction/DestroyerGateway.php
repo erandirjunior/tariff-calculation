@@ -1,6 +1,6 @@
 <?php
 
-namespace SRC\RoomCoin\Domain\Destruction;
+namespace SRC\RoomCurrency\Domain\Destruction;
 
 interface DestroyerGateway
 {

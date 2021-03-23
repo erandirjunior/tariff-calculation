@@ -1,6 +1,6 @@
 <?php
 
-namespace SRC\RoomCoin\Infra\Http;
+namespace SRC\RoomCurrency\Infra\Http;
 
 use Config\Http\Action;
 use Config\Response\JsonResponse;
@@ -9,15 +9,15 @@ use Psr\Http\Message\ResponseInterface;
 class Update extends Action
 {
     public function __construct(
-        private \SRC\RoomCoin\Adapters\Gateways\Update $update,
-        private \SRC\RoomCoin\Infra\Validator\Update $updateValidator
+        private \SRC\RoomCurrency\Adapters\Gateways\Update $update,
+        private \SRC\RoomCurrency\Infra\Validator\Update $updateValidator
     )
     {}
 
     public function handle(): ResponseInterface
     {
         $this->updateValidator->validate($this->body);
-        $controller = new \SRC\RoomCoin\Adapters\Controllers\Update(
+        $controller = new \SRC\RoomCurrency\Adapters\Controllers\Update(
             $this->update
         );
 

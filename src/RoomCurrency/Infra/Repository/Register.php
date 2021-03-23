@@ -1,8 +1,8 @@
 <?php
 
-namespace SRC\RoomCoin\Infra\Repository;
+namespace SRC\RoomCurrency\Infra\Repository;
 
-use SRC\RoomCoin\Adapters\Gateways\RegisterUnit;
+use SRC\RoomCurrency\Adapters\Gateways\RegisterUnit;
 
 class Register implements RegisterUnit
 {
@@ -11,7 +11,7 @@ class Register implements RegisterUnit
 
     public function register(int $roomId, int $currencyId, float $price, int $hotelId): int
     {
-        $sql = 'INSERT INTO room_coin (room_id, coin_id, price, hotel_id) VALUE (?, ?, ?, ?)';
+        $sql = 'INSERT INTO room_currency (room_id, currency_id, price, hotel_id) VALUE (?, ?, ?, ?)';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(1, $roomId);
         $stmt->bindValue(2, $currencyId);
@@ -23,16 +23,16 @@ class Register implements RegisterUnit
 
     public function roomPrice(int $roomId, int $currencyId): bool
     {
-        $stmt = $this->pdo->prepare('SELECT id FROM room_coin WHERE room_id = ? AND coin_id = ?');
+        $stmt = $this->pdo->prepare('SELECT id FROM room_currency WHERE room_id = ? AND currency_id = ?');
         $stmt->bindValue(1, $roomId);
         $stmt->bindValue(2, $currencyId);
         $stmt->execute();
         return $stmt->rowCount() > 0;
     }
 
-    public function checkIfCoinExists(int $currencyId): bool
+    public function checkIfCurrencyExists(int $currencyId): bool
     {
-        $room = (new \SRC\Coin\Infra\Repository\FindByIdentifier($this->pdo))
+        $room = (new \SRC\Currency\Infra\Repository\FindByIdentifier($this->pdo))
             ->find($currencyId);
         return !!$room;
     }

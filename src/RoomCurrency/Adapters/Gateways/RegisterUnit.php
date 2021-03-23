@@ -1,6 +1,6 @@
 <?php
 
-namespace SRC\RoomCoin\Adapters\Gateways;
+namespace SRC\RoomCurrency\Adapters\Gateways;
 
 interface RegisterUnit
 {
@@ -8,5 +8,5 @@ interface RegisterUnit
 
     public function roomPrice(int $roomId, int $currencyId): bool;
 
-    public function checkIfCoinExists(int $currencyId): bool;
+    public function checkIfCurrencyExists(int $currencyId): bool;
 }

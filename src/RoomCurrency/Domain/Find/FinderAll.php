@@ -1,6 +1,6 @@
 <?php
 
-namespace SRC\RoomCoin\Domain\Find;
+namespace SRC\RoomCurrency\Domain\Find;
 
 class FinderAll
 {

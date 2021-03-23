@@ -1,6 +1,6 @@
 <?php
 
-namespace SRC\RoomCoin\Domain\Register;
+namespace SRC\RoomCurrency\Domain\Register;
 
 class Register
 {
@@ -10,35 +10,35 @@ class Register
     )
     {}
 
-    public function register(RoomCoin $roomCoin): void
+    public function register(RoomCurrency $roomCurrency): void
     {
-        $this->checkIfCoinExists($roomCoin);
+        $this->checkIfCurrencyExists($roomCurrency);
     }
 
-    private function checkIfCoinExists(RoomCoin $roomCoin): void
+    private function checkIfCurrencyExists(RoomCurrency $roomCurrency): void
     {
-        if (!$this->registerGateway->checkIfCoinExists($roomCoin->getCoinId())) {
+        if (!$this->registerGateway->checkIfCurrencyExists($roomCurrency->getCurrencyId())) {
             throw new \InvalidArgumentException('Currency is not valid!');
         }
 
-        $this->registerIfRoomCoinIsUnique($roomCoin);
+        $this->registerIfRoomCurrencyIsUnique($roomCurrency);
     }
 
-    public function registerIfRoomCoinIsUnique(RoomCoin $roomCoin): void
+    public function registerIfRoomCurrencyIsUnique(RoomCurrency $roomCurrency): void
     {
-        $roomId = $roomCoin->getRoomId();
-        $currencyId = $roomCoin->getCoinId();
-        if ($this->registerGateway->registerIfRoomCoinIsUnique($roomId, $currencyId)) {
-            $msg = "The room coin for this hotel's room already be registered.";
+        $roomId = $roomCurrency->getRoomId();
+        $currencyId = $roomCurrency->getCurrencyId();
+        if ($this->registerGateway->registerIfRoomCurrencyIsUnique($roomId, $currencyId)) {
+            $msg = "The room currency for this hotel's room already be registered.";
             throw new \DomainException($msg);
         }
 
-        $this->registerData($roomCoin);
+        $this->registerData($roomCurrency);
     }
 
-    private function registerData(RoomCoin $roomCoin): void
+    private function registerData(RoomCurrency $roomCurrency): void
     {
-        $registeredRoomPrice = $this->registerGateway->register($roomCoin);
+        $registeredRoomPrice = $this->registerGateway->register($roomCurrency);
         $this->presenter->addData($registeredRoomPrice);
     }
 }

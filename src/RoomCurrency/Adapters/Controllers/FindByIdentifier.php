@@ -1,10 +1,10 @@
 <?php
 
-namespace SRC\RoomCoin\Adapters\Controllers;
+namespace SRC\RoomCurrency\Adapters\Controllers;
 
-use SRC\RoomCoin\Domain\Find\FinderByIdentifier;
-use SRC\RoomCoin\Domain\Find\FinderByIdentifierGateway;
-use SRC\RoomCoin\Domain\Find\Presenter;
+use SRC\RoomCurrency\Domain\Find\FinderByIdentifier;
+use SRC\RoomCurrency\Domain\Find\FinderByIdentifierGateway;
+use SRC\RoomCurrency\Domain\Find\Presenter;
 
 class FindByIdentifier
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace SRC\RoomCoin\Infra\Repository;
+namespace SRC\RoomCurrency\Infra\Repository;
 
-use SRC\RoomCoin\Adapters\Gateways\FindAllUnit;
+use SRC\RoomCurrency\Adapters\Gateways\FindAllUnit;
 
 class FindAll implements FindAllUnit
 {
@@ -11,7 +11,7 @@ class FindAll implements FindAllUnit
 
     public function find(int $roomId, int $hotelId): array
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM room_coin WHERE room_id = ? AND hotel_id = ?');
+        $stmt = $this->pdo->prepare('SELECT * FROM room_currency WHERE room_id = ? AND hotel_id = ?');
         $stmt->bindValue(1, $roomId);
         $stmt->bindValue(2, $hotelId);
         $stmt->execute();

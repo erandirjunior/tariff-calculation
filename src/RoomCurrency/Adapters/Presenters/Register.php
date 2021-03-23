@@ -1,20 +1,20 @@
 <?php
 
-namespace SRC\RoomCoin\Adapters\Presenters;
+namespace SRC\RoomCurrency\Adapters\Presenters;
 
-use SRC\RoomCoin\Domain\Register\Presenter;
-use SRC\RoomCoin\Domain\RegisteredRoomCoin;
+use SRC\RoomCurrency\Domain\Register\Presenter;
+use SRC\RoomCurrency\Domain\RegisteredRoomCurrency;
 
 class Register implements Presenter
 {
     public function __construct(private RegisterVM $registerVM)
     {}
 
-    public function addData(RegisteredRoomCoin $registeredRoomPrice): void
+    public function addData(RegisteredRoomCurrency $registeredRoomPrice): void
     {
         $content = [
             'roomId' => $registeredRoomPrice->getRoomId(),
-            'currencyId' => $registeredRoomPrice->getCoinId(),
+            'currencyId' => $registeredRoomPrice->getCurrencyId(),
             'price' => $registeredRoomPrice->getPrice(),
             'hotel_id' => $registeredRoomPrice->getHotelId(),
             'id' => $registeredRoomPrice->getId(),

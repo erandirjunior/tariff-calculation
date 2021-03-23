@@ -1,17 +1,17 @@
 <?php
 
-namespace SRC\RoomCoin\Adapters\Controllers;
+namespace SRC\RoomCurrency\Adapters\Controllers;
 
 class Destroy
 {
     public function __construct(
-        private \SRC\RoomCoin\Adapters\Gateways\Destroy $repository,
+        private \SRC\RoomCurrency\Adapters\Gateways\Destroy $repository,
     )
     {}
 
     public function handle(int $roomId, int $id, int $hotelId)
     {
-        $domain = new \SRC\RoomCoin\Domain\Destruction\Destroyer(
+        $domain = new \SRC\RoomCurrency\Domain\Destruction\Destroyer(
             $this->repository
         );
 

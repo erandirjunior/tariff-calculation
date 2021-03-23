@@ -1,9 +1,9 @@
 <?php
 
-namespace SRC\RoomCoin\Adapters\Presenters;
+namespace SRC\RoomCurrency\Adapters\Presenters;
 
-use SRC\RoomCoin\Domain\Find\FinderAllPresenter;
-use SRC\RoomCoin\Domain\Find\RoomPriceContainer;
+use SRC\RoomCurrency\Domain\Find\FinderAllPresenter;
+use SRC\RoomCurrency\Domain\Find\RoomPriceContainer;
 
 class FindAll implements FinderAllPresenter
 {
@@ -15,7 +15,7 @@ class FindAll implements FinderAllPresenter
         foreach ($roomPriceContainer->getData() as $room) {
             $this->findAllVM->setData(
                 $room->getRoomId(),
-                $room->getCoinId(),
+                $room->getCurrencyId(),
                 $room->getPrice(),
                 $room->getHotelId(),
                 $room->getId()
