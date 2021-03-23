@@ -20,7 +20,9 @@ services:
     image: mysql:5.7
     ports:
       - "3306:3306"
+    command: --init-file /data/application/dump.sql
     volumes:
+      - ./dump/dump.sql:/data/application/dump.sql
       - dba:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=tariff_calculation
