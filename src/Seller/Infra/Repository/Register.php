@@ -18,10 +18,10 @@ class Register implements RegisterUnit
         return $this->pdo->lastInsertId();
     }
 
-    public function checkIfNameIsInUse(string $money): bool
+    public function checkIfNameIsInUse(string $name): bool
     {
         $stmt = $this->pdo->prepare('SELECT id FROM seller WHERE name = ?');
-        $stmt->bindValue(1, $money);
+        $stmt->bindValue(1, $name);
         $stmt->execute();
         return $stmt->rowCount() > 0;
     }

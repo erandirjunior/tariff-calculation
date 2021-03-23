@@ -18,8 +18,8 @@ class Register
             $this->registerGateway,
             $this->presenter
         );
-        $money = new Hotel($name);
+        $hotel = new Hotel($name);
 
-        $domain->register($money);
+        $domain->register($hotel);
     }
 }

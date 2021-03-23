@@ -6,5 +6,5 @@ use SRC\User\Domain\RegisteredUser;
 
 interface Presenter
 {
-    public function addData(RegisteredUser $registeredMoney): void;
+    public function addData(RegisteredUser $registeredUser): void;
 }

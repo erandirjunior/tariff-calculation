@@ -27,7 +27,7 @@ class Register
 
     private function registerData(Seller $seller): void
     {
-        $registeredMoney = $this->registerGateway->register($seller);
-        $this->presenter->addData($registeredMoney);
+        $registeredSeller = $this->registerGateway->register($seller);
+        $this->presenter->addData($registeredSeller);
     }
 }

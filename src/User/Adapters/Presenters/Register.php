@@ -10,12 +10,12 @@ class Register implements Presenter
     public function __construct(private RegisterVM $registerVM)
     {}
 
-    public function addData(RegisteredUser $registeredMoney): void
+    public function addData(RegisteredUser $registeredUser): void
     {
         $content = [
-            'name' => $registeredMoney->getName(),
-            'email' => $registeredMoney->getEmail(),
-            'id' => $registeredMoney->getId(),
+            'name' => $registeredUser->getName(),
+            'email' => $registeredUser->getEmail(),
+            'id' => $registeredUser->getId(),
         ];
 
         $this->registerVM->setData($content);

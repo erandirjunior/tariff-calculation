@@ -27,7 +27,7 @@ class Register
 
     private function registerData(Hotel $hotel): void
     {
-        $registeredMoney = $this->registerGateway->register($hotel);
-        $this->presenter->addData($registeredMoney);
+        $registeredHotel = $this->registerGateway->register($hotel);
+        $this->presenter->addData($registeredHotel);
     }
 }

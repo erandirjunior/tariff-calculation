@@ -4,7 +4,7 @@ namespace SRC\Seller\Adapters\Gateways;
 
 interface RegisterUnit
 {
-    public function register(string $money, float $profitMargin): int;
+    public function register(string $name, float $profitMargin): int;
 
-    public function checkIfNameIsInUse(string $money): bool;
+    public function checkIfNameIsInUse(string $name): bool;
 }
