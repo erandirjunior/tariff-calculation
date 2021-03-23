@@ -17,17 +17,33 @@ para o melhor formato que minha camada de Domínio precisa, e também converte o
 formato mais adequado para as camadas superiores. Já a camada de Domain, é onde ficam nossa camada de regras de negócio,
 na qual temos todas as dependências definidas em interfaces de modo que seja possível testar nossas regras.
 
+## Estrutura
+    .
+    ├── config                  # Pasta de configuração do projeto
+    ├── dump                    # Estrutura do banco de dados
+    ├── public                  # Pasta onde toda a requisição de inicia
+    ├── routes                  # Rotas do projeto
+    ├── src                     # Código fonte do projeto
+    ├── tests                   # Testes
+    └── README.md               # Instruções
+    └── .gitignore              # Arquivo do git
+    └── composer.json           # Arquivo de definição de dependências
+    └── composer.lock           # Arquivo de definição de dependências
+    └── docker-compose.yml      # Arquivo de configuração do docker
+    └── phpunit.xml             # Arquivo para rodar os testes do phpunit
+
 ## Componentes utilizados:
-* Docker
-* Docker-compose
-* PHP >= 8
-* Composer
-* MySQL
-* Slim
-* Laravel Validation
-* PDO
-* PHP-DI
-* API https://economia.awesomeapi.com.br
+* Docker (Criação de ambientes virtuais)
+* Docker-compose (Orquestrador de containers)
+* PHP >= 8 (Linguagem de programação)
+* Composer (Gerenciador de dependências)
+* MySQL (Banco de dados)
+* Slim (Rotas)
+* Laravel Validation (Validação de dados)
+* PDO (Driver de conexão com a base de dados)
+* PHP-DI (Biblioteca de injeção de dependências)
+* API https://economia.awesomeapi.com.br (Api para pegar cotação da moeda)
+* https://github.com/omniti-labs/jsend (Padronização de resposta)
 
 ## Uso da Api
 Para rodar este projeto é necessário ter o Docker e Docker-compose instalado,
@@ -49,6 +65,7 @@ body:
 }
 result:
 {
+    "status": "success",
     "content": {
         "money": "EUR",
         "profitMargin": 15,
@@ -62,7 +79,8 @@ url: /coins
 type: GET
 result:
 {
-    "content": [
+    "status": "success",
+    "data": [
         {
             "money": "BRL",
             "profitMargin": 0,
@@ -87,7 +105,8 @@ url: /coins/{id}
 type: GET
 result:
 {
-    "content": {
+    "status": "success",
+    "data": {
         "money": "BRL",
         "profitMargin": 50,
         "id": 2
@@ -121,7 +140,8 @@ body:
 }
 result:
 {
-    "content": {
+    "status": "success",
+    "data": {
         "name": "Hotel c",
         "id": 3
     }
@@ -133,7 +153,8 @@ url: /hotels
 type: GET
 result:
 {
-    "content": [
+    "status": "success",
+    "data": [
         {
             "name": "Hotel b",
             "id": 2
@@ -151,7 +172,8 @@ url: /hotels/{id}
 type: GET
 result:
 {
-    "content": {
+    "status": "success",
+    "data": {
         "name": "Hotel b",
         "id": 2
     }
@@ -183,7 +205,8 @@ body:
 }
 result:
 {
-    "content": {
+    "status": "success",
+    "data": {
         "room": "QDPL",
         "id": 4,
         "hotelId": 1
@@ -196,7 +219,8 @@ url: /hotel/{hotelId}/rooms
 type: GET
 result:
 {
-    "content": [
+    "status": "success",
+    "data": [
         {
             "name": "TPL",
             "id": 1,
@@ -216,7 +240,8 @@ url: /hotel/{hotelId}/rooms/{roomId}
 type: GET
 result:
 {
-    "content": {
+    "status": "success",
+    "data": {
         "name": "TPL",
         "id": 1,
         "hotel": 2
@@ -250,7 +275,8 @@ body:
 }
 result:
 {
-    "content": {
+    "status": "success",
+    "data": {
         "roomId": 1,
         "coinId": 2,
         "price": 130,
@@ -264,7 +290,8 @@ url: /hotel/{hotelId}/rooms/{roomId}/coins
 type: GET
 result:
 {
-    "content": [
+    "status": "success",
+    "data": [
         {
             "roomId": 2,
             "coinId": 2,
@@ -286,7 +313,8 @@ url: /hotel/{hotelId}/rooms/{roomId}/coins
 type: GET
 result:
 {
-    "content": {
+    "status": "success",
+    "data": {
         "roomId": 1,
         "coinId": 2,
         "price": 201,
@@ -322,7 +350,8 @@ body:
 }
 result:
 {
-    "content": {
+    "status": "success",
+    "data": {
         "name": "Agência",
         "profitMargin": 2,
         "id": 1
@@ -335,7 +364,8 @@ url: /sellers
 type: GET
 result:
 {
-    "content": [
+    "status": "success",
+    "data": [
         {
             "name": "Revenda",
             "profitMargin": 1,
@@ -360,7 +390,8 @@ url: /sellers/{id}
 type: GET
 result:
 {
-    "content": {
+    "status": "success",
+    "data": {
         "name": "Revenda",
         "profitMargin": 1,
         "id": 2
@@ -400,7 +431,8 @@ body:
 }
 result:
 {
-    "content": {
+    "status": "success",
+    "data": {
         "price": 549
     }
 }
@@ -418,7 +450,8 @@ body:
 }
 result:
 {
-    "content": {
+    "status": "success",
+    "data": {
         "name": "Erandir",
         "email": "erandir@email.com",
         "id": 1
@@ -431,7 +464,8 @@ url: /users
 type: GET
 result:
 {
-    "content": [
+    "status": "success",
+    "data": [
         {
             "name": "Erandir",
             "email": "erandir2@email.com",
@@ -451,7 +485,8 @@ url: /users/{id}
 type: GET
 result:
 {
-    "content": {
+    "status": "success",
+    "data": {
         "name": "Junior",
         "email": "junior@email.com",
         "id": 2
@@ -489,7 +524,8 @@ body:
 }
 result:
 {
-    "content": {
+    "status": "success",
+    "data": {
         "userCoinNeed": 2,
         "coinBase": 2,
         "roomId": 1,
@@ -508,7 +544,8 @@ url: /users/{userId}/bookings
 type: GET
 result:
 {
-    "content": [
+    "status": "success",
+    "data": [
         {
             "coinBase": 2,
             "userCoinNeed": 2,
@@ -540,7 +577,8 @@ url: /users/{id}/bookings/{id}
 type: GET
 result:
 {
-    "content": {
+    "status": "success",
+    "data": {
         "coinBase": 2,
         "userCoinNeed": 2,
         "roomId": 1,
@@ -572,7 +610,7 @@ docker exec -it tariff-calculation_tariff_1 bash
 ```
 Já dentro do container, rode o comando abaixo para rodar os testes.
 ```bash
-php vendor/bin/phpunit --configuration phpunit.xml 
+php vendor/bin/phpunit 
 ```
 **Foi criado apenas o teste de Cálculo de Tarifa, o motivo é que é a principal regra nesse projeto,
 os demais módulos são constituídos básicamente por cruds, na qual um teste funcional foi o suficiente.**
